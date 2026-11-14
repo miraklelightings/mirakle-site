@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import Calculator from "./Calculator";
 
 export const metadata: Metadata = { title: "QuikLit BOQ calculator", description: "List your furniture runs and get the full QuikLit bill of quantities — profiles, accessory sets, sensors and 24V supplies." };
@@ -16,6 +17,7 @@ export default function Page() {
         </div>
         <Calculator />
       </main>
+      <Footer />
     </>
   );
 }
