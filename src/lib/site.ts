@@ -13,3 +13,6 @@ export const SHOWROOM = {
   address: "101–103 Maruti Crystal, Nr. Gordhan Thal, Opp. Rajpath Club, Bodakdev, Ahmedabad 380054",
   hours: "Open 10:30 am – 7:30 pm",
 };
+
+// Client and project names shown on the home page. Add real names only, with permission.
+export const CLIENTS: string[] = [];
