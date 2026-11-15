@@ -1,6 +1,8 @@
 // QuikLit product data and working rules.
-// Every code, wattage and rule below is from the QuikLit Furniture Lighting Collection 2027–28 catalogue
-// (code index p.42, power p.35, wiring p.41). The 6 m pack size is the QuikLit team's packing rule.
+// Codes, wattages and the 85 % load rule are from the QuikLit Furniture Lighting Collection 2027–28 catalogue
+// (code index p.42, power p.35, wiring p.41). Confirmed by Krutish Shah on 15 Nov 2026, as the QuikLit team works:
+// one sensor needs a supply of its own; 1010 and Asymmetric 1010 have a straight connector as well as the corner
+// connector; everything is sold in 6 m packs; round tube packing is compulsory, one tube for every 90 m.
 
 export type Profile = {
   key: string;        // stable id used in the calculator
@@ -21,8 +23,8 @@ export const PROFILES: Profile[] = [
   { key: "tilt", code: "QUIKTILT-1010-150", name: "QuikTilt 1010, tilts 150°", size: "10 × 10 mm", wpm: 14, acc: "QUIKTILT-1010-150-ACC", page: "/quiklit/" },
   { key: "0609", code: "QUIKLIT-0609", name: "QuikLit 0609", size: "6 × 9 mm", wpm: 9, acc: "QUIKLIT-0609-ACC", corner: "QUIKLIT-0609-CORNER CONNECTOR", page: "/quiklit/" },
   { key: "0809", code: "QUIKLIT-0809", name: "QuikLit 0809", size: "8 × 9 mm", wpm: 9, acc: "QUIKLIT-0809-ACC", corner: "QUIKLIT-0809-CORNER CONNECTOR", page: "/quiklit/" },
-  { key: "1010", code: "QUIKLIT-1010", name: "QuikLit 1010", size: "10 × 10 mm", wpm: 14, acc: "QUIKLIT-1010-ACC", corner: "QUIKLIT-1010-PRISMATIC CORNER CONNECTOR", page: "/quiklit/" },
-  { key: "asym", code: "QUIKLIT-ASYMMETRIC-1010", name: "QuikLit Asymmetric 1010", size: "10 × 10 mm", wpm: 14, acc: "QUIKLIT-1010-ACC", corner: "QUIKLIT-1010-PRISMATIC CORNER CONNECTOR", page: "/quiklit/" },
+  { key: "1010", code: "QUIKLIT-1010", name: "QuikLit 1010", size: "10 × 10 mm", wpm: 14, acc: "QUIKLIT-1010-ACC", corner: "QUIKLIT-1010-PRISMATIC CORNER CONNECTOR", straight: "QUIKLIT 1010 STRAIGHT CONNECTOR", page: "/quiklit/" },
+  { key: "asym", code: "QUIKLIT-ASYMMETRIC-1010", name: "QuikLit Asymmetric 1010", size: "10 × 10 mm", wpm: 14, acc: "QUIKLIT-1010-ACC", corner: "QUIKLIT-1010-PRISMATIC CORNER CONNECTOR", straight: "QUIKLIT 1010 STRAIGHT CONNECTOR", page: "/quiklit/" },
   { key: "ecoflex", code: "QUIKLIT-1010 ECOFLEX", name: "QuikLit 1010 EcoFlex", size: "10 × 10 mm", wpm: 9, acc: "QUIKLIT-1010 ECOFLEX-ACC", corner: "QUIKLIT-1010 ECOFLEX-CORNER CONNECTOR", straight: "QUIKLIT-1010 ECOFLEX-CONNECTOR", page: "/quiklit/" },
   { key: "ecomax", code: "QUIKLIT-1010 ECOMAX", name: "QuikLit 1010 EcoMax", size: "10 × 10 mm", wpm: 14, acc: "QUIKLIT-1010 ECOFLEX-ACC", corner: "QUIKLIT-1010 ECOFLEX-CORNER CONNECTOR", straight: "QUIKLIT-1010 ECOFLEX-CONNECTOR", page: "/quiklit/" },
   { key: "glass", code: "QUIKLIT-8MM-GLASS", name: "QuikLit 8 mm Glass", size: "for 8 mm glass", wpm: 9, acc: "QUIKLIT-8MM-GLASS-ACC", page: "/quiklit/" },
@@ -70,9 +72,11 @@ export const RULES = {
   packPieces: 2,         // packed two lengths (6 m) to a pack
   cutMm: 3,              // saw cut allowed for each piece
   loadPct: 85,           // catalogue p.35: load a supply to no more than 85 %
-  sensorMaxW: 120,       // catalogue p.35: with a sensor fitted, 120 W at most on that supply
+  sensorMaxW: 120,       // with a sensor fitted, 120 W at most on that supply; one sensor to a supply
   splitterGain: 5,       // a 6-port splitter takes one light port and gives six
+  tubeM: 90,             // one round packing tube holds 90 m of profile
 };
+export const PACKING = { code: "QUIKLIT ROUND TUBE PACKING" };
 
 export const UNITS: Record<string, { label: string; mm: number }> = {
   mm: { label: "mm", mm: 1 },

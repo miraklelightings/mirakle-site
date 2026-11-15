@@ -27,7 +27,18 @@ function TableView({ t }: { t: Table }) {
   );
 }
 
-export default function ProductPage({ p, siblings, world }: { p: Product; siblings: Product[]; world: World }) {
+// Architectural & Technical pages do not publish ordering codes; they are sent on request.
+const CODE_COL = /^(code|erp code|order code)$/i;
+function withoutCodes(t: Table): Table | null {
+  if (!t.head || !t.rows || !t.head.some((h) => CODE_COL.test(h))) return t;
+  const keep = t.head.map((h, i) => (CODE_COL.test(h) ? -1 : i)).filter((i) => i >= 0);
+  if (!keep.length) return null;
+  const rows = t.rows.map((r) => keep.map((i) => r[i] ?? "")).filter((r, i, all) => all.findIndex((x) => x.join("|") === r.join("|")) === i);
+  return { ...t, title: t.title.replace(/\s*·\s*codes/i, "").replace(/^Codes$/i, "Versions"), head: keep.map((i) => t.head![i]), rows };
+}
+
+export default function ProductPage({ p: raw, siblings, world }: { p: Product; siblings: Product[]; world: World }) {
+  const p = world === "arch" ? { ...raw, tables: raw.tables.map(withoutCodes).filter((t): t is Table => Boolean(t)) } : raw;
   const m = MANAGERS[world];
   const name = title(p);
   const back = world === "ql" ? { href: "/quiklit/", label: "QuikLit" } : { href: "/architectural/", label: "Architectural & Technical" };

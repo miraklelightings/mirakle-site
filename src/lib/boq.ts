@@ -1,4 +1,4 @@
-import { PROFILES, PIECES, SUPPLIES, WIRING, RULES, UNITS, type Profile } from "./quiklit";
+import { PROFILES, PIECES, SUPPLIES, WIRING, RULES, UNITS, PACKING, type Profile } from "./quiklit";
 
 export type Cct = "3K" | "4K";
 export type Run = {
@@ -44,9 +44,8 @@ export function pickSupplies(watts: number, lights: number, sensors: number) {
   for (let a = 0; a <= 12; a++) for (let b = 0; b <= 12; b++) for (let c = 0; c <= 12; c++) {
     const count = a + b + c;
     if (!count) continue;
-    const carrying = Math.ceil(sensors / 2);                 // two sensor ports on each supply
-    if (carrying > count) continue;
-    const big = Math.max(0, carrying - (a + b));             // 150 W supplies that must carry a sensor
+    if (sensors > count) continue;                           // one sensor needs a supply of its own
+    const big = Math.max(0, sensors - (a + b));              // 150 W supplies that must carry a sensor
     const cap = a * s60.safe + b * s100.safe + (c - big) * s150.safe + big * Math.min(s150.safe, RULES.sensorMaxW);
     if (cap < watts - 1e-9) continue;
     const ports = a * s60.lightPorts + b * s100.lightPorts + c * s150.lightPorts;
@@ -100,13 +99,14 @@ export function buildBoq(runs: Run[], extras: Extras = {}) {
     acc.set(p.acc, (acc.get(p.acc) || 0) + perLine * n);
     lights += perLine * n;
     if (corners && p.corner) conn.set(p.corner, { qty: (conn.get(p.corner)?.qty || 0) + corners * n, kind: "Corner connector, one for each 90° turn" });
-    if (joins && p.straight) conn.set(p.straight, { qty: (conn.get(p.straight)?.qty || 0) + joins * n, kind: "Straight jointer, joins two 3 m lengths in one line" });
-    if (joins && !p.straight) warnings.push(`${name}: ${fmtM(segLen / 1000)} m is longer than one 3 m length and ${p.name} has no straight jointer, so each length is fitted as a light of its own with its own accessory set and light port. For one unbroken line choose QuikLit 1707, 1010 EcoFlex or 1010 EcoMax.`);
+    if (joins && p.straight) conn.set(p.straight, { qty: (conn.get(p.straight)?.qty || 0) + joins * n, kind: "Straight connector, joins two 3 m lengths in one line" });
+    if (joins && !p.straight) warnings.push(`${name}: ${fmtM(segLen / 1000)} m is longer than one 3 m length and ${p.name} has no straight jointer, so each length is fitted as a light of its own with its own accessory set and light port. For one unbroken line choose a profile with a straight connector: ${PROFILES.filter((x) => x.straight && !x.noCct).map((x) => x.name.replace("QuikLit ", "")).join(", ")}.`);
     if (!p.corner && whole(r.corners) > 0) warnings.push(`${name}: ${p.name} has no corner connector. Enter each side as its own line.`);
   }
 
   // ---- profiles
   const spare: { code: string; needM: number; orderM: number; offcuts: number[] }[] = [];
+  let packsTotal = 0;
   for (const p of PROFILES) for (const cct of p.noCct ? [""] : ["3K", "4K"]) {
     const key = `${p.key}|${cct}`;
     const code = p.code + (cct ? `-${cct}` : "");
@@ -121,6 +121,7 @@ export function buildBoq(runs: Run[], extras: Extras = {}) {
     const bins = pack(list);
     const packs = Math.ceil(bins.length / RULES.packPieces);
     const lengths = packs * RULES.packPieces;
+    packsTotal += packs;
     const orderM = (lengths * RULES.stockMm) / 1000;
     const offcuts = [...bins.map((used) => Math.round(RULES.stockMm - used)), ...Array(lengths - bins.length).fill(RULES.stockMm)].filter((x) => x >= 50).sort((a, b) => b - a);
     spare.push({ code, needM: need, orderM, offcuts });
@@ -142,19 +143,21 @@ export function buildBoq(runs: Run[], extras: Extras = {}) {
 
   // ---- sensors
   let sensorQty = 0;
-  for (const [code, qty] of sensors) { sensorQty += qty; lines.push({ group: "Sensors", code, desc: "QuikSens sensor, plugs into a sensor port on the supply", qty, unit: "pcs" }); }
+  for (const [code, qty] of sensors) { sensorQty += qty; lines.push({ group: "Sensors", code, desc: "QuikSens sensor, one to a supply", qty, unit: "pcs" }); }
 
   // ---- power
   const plan = pickSupplies(watts, lights, sensorQty);
   const supplies: Supply[] = [];
   if (plan) {
-    SUPPLIES.forEach((s, i) => { if (plan.n[i]) { supplies.push({ code: s.code, qty: plan.n[i] }); lines.push({ group: "Power and wiring", code: s.code, desc: `24V DC supply, ${s.watts} W, ${s.lightPorts} light ports and ${s.sensorPorts} sensor ports. Carries up to ${s.safe} W.`, qty: plan.n[i], unit: "pcs" }); } });
+    SUPPLIES.forEach((s, i) => { if (plan.n[i]) { supplies.push({ code: s.code, qty: plan.n[i] }); lines.push({ group: "Power and wiring", code: s.code, desc: `24V DC supply, ${s.watts} W, ${s.lightPorts} light ports. Carries up to ${s.safe} W.`, qty: plan.n[i], unit: "pcs" }); } });
     if (plan.splitters) lines.push({ group: "Power and wiring", code: WIRING.splitter.code, desc: `${WIRING.splitter.ports}-port splitter, for more lights than the supply has ports`, qty: plan.splitters, unit: "pcs" });
   } else if (watts > 0) warnings.push(`A load of ${Math.round(watts)} W is beyond what this calculator plans. Send it to us and we will plan the supplies.`);
   const ext = whole(extras.ext), sExt = whole(extras.sensorExt);
   if (ext) lines.push({ group: "Power and wiring", code: WIRING.extension.code, desc: `Extension wire, ${WIRING.extension.note}`, qty: ext, unit: "pcs" });
   if (sExt) lines.push({ group: "Power and wiring", code: WIRING.sensorExtension.code, desc: `Sensor extension wire, ${WIRING.sensorExtension.note}`, qty: sExt, unit: "pcs" });
-  if (sensorQty) warnings.push(`A sensor switches every light on its supply, and that supply may carry ${RULES.sensorMaxW} W at most. Our team will confirm which lights each sensor controls.`);
+  if (sensorQty) warnings.push(`Each sensor needs a supply of its own. It switches every light on that supply, ${RULES.sensorMaxW} W at most. Our team will confirm which lights each sensor controls.`);
+  const tubes = Math.ceil((packsTotal * RULES.packPieces * RULES.stockMm) / 1000 / RULES.tubeM - 1e-9);
+  if (tubes) lines.push({ group: "Packing", code: PACKING.code, desc: `Round tube, compulsory. It protects the profiles in transit; one tube holds ${RULES.tubeM} m.`, qty: tubes, unit: "pcs" });
 
   return { lines, warnings, watts, lights, metres, sensors: sensorQty, plan, supplies, spare };
 }

@@ -238,7 +238,7 @@ export default function Calculator() {
             {boq.warnings.length > 0 && <ul className="calc-warn">{boq.warnings.map((w) => <li key={w}>{w}</li>)}</ul>}
 
             <p className="t14 grey calc-rules">
-              How this is counted, as in the QuikLit catalogue 2027–28: one accessory set for each light; a supply is loaded to no more than {RULES.loadPct}% of its rating (51 W on 60 W, 85 W on 100 W, 127 W on 150 W); one light for each light port, with the {WIRING.splitter.ports}-port splitter when you need more; two sensor ports on each supply. Cutting allows {RULES.cutMm} mm for each saw cut. Prices are on enquiry. Our team checks every list before quoting.
+              How this is counted: one accessory set for each light; a supply is loaded to no more than {RULES.loadPct}% of its rating (51 W on 60 W, 85 W on 100 W, 127 W on 150 W); one light for each light port, with the {WIRING.splitter.ports}-port splitter when you need more; one sensor to a supply; profiles in 6 m packs, with one round packing tube for every {RULES.tubeM} m. Cutting allows {RULES.cutMm} mm for each saw cut. Prices are on enquiry. Our team checks every list before quoting.
             </p>
 
             <div className="calc-send no-print" {...H("send")}>

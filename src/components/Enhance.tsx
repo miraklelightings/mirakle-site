@@ -104,7 +104,7 @@ function titanConfigurator(root: HTMLElement) {
   const cri = sec.querySelector('input[type="checkbox"]') as HTMLInputElement | null;
   const codeEl = [...sec.querySelectorAll("span")].find((s) => txt(s).startsWith("TTN-")) as HTMLElement;
   const descEl = codeEl?.nextElementSibling as HTMLElement;
-  const sendLink = [...sec.querySelectorAll("a")].find((a) => txt(a) === "Send this code") as HTMLAnchorElement;
+  const sendLink = [...sec.querySelectorAll("a")].find((a) => /^Send this (code|configuration)$/.test(txt(a))) as HTMLAnchorElement;
   const cur = (label: string) => txt(g(label)?.querySelector('[aria-pressed="true"]'));
   function update() {
     const cct = CCT[cur("CCT")] || "3K";
@@ -129,7 +129,7 @@ function titanConfigurator(root: HTMLElement) {
       const half = Math.min(46, (dia / 2) * 13);   // 13 px per metre at this drawing scale
       box.innerHTML = `<svg viewBox="0 0 100 60" preserveAspectRatio="xMidYMid meet" style="position:absolute;inset:0;width:100%;height:100%"><defs><linearGradient id="bg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd9a0" stop-opacity=".85"/><stop offset="1" stop-color="#ffd9a0" stop-opacity=".12"/></linearGradient></defs><line x1="4" y1="8" x2="96" y2="8" stroke="#6B6660" stroke-width=".4"/><line x1="4" y1="47" x2="96" y2="47" stroke="#6B6660" stroke-width=".4"/><polygon points="50,8 ${50 - half},47 ${50 + half},47" fill="url(#bg3)" style="transition:all .5s"/><rect x="48.6" y="6.6" width="2.8" height="1.6" fill="#F6F4F0"/><line x1="${50 - half}" y1="51" x2="${50 + half}" y2="51" stroke="#F6F4F0" stroke-width=".3"/><text x="50" y="57" text-anchor="middle" font-size="3.4" fill="#F6F4F0" letter-spacing=".3">Ø ${dia.toFixed(2)} M AT 3 M · ${deg}° BEAM</text><text x="5" y="5.2" font-size="2.6" fill="#A39D94" letter-spacing=".3">CEILING</text><text x="5" y="45.4" font-size="2.6" fill="#A39D94" letter-spacing=".3">FLOOR · 3 M BELOW · NOMINAL GEOMETRY</text></svg>`;
     }
-    if (sendLink) sendLink.href = `/contact/?about=arch&msg=${encodeURIComponent("TITAN — " + code)}`;
+    if (sendLink) sendLink.href = `/contact/?about=arch&msg=${encodeURIComponent("TITAN: " + (descEl?.textContent || ""))}`;
   }
   groups.forEach((grp) => grp.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => {
     if ((b as HTMLButtonElement).disabled) return;

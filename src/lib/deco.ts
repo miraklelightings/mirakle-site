@@ -33,4 +33,4 @@ export const titleOf = (d: DItem) => d.codes.join(" · ");
 // The first picture to show for a family or a material: a full room scene where the catalogue has one.
 export const coverOf = (list: DItem[]) => list.find((d) => d.scenes.length)?.scenes[0] || list[0]?.img;
 export type CardData = { slug: string; codes: string[]; finish: string; img: DImg; tags: string[] };
-export const cardOf = (d: DItem): CardData => ({ slug: d.slug, codes: d.codes, finish: [...new Set(d.variants.map((v) => v.finish))].join(" / "), img: d.img, tags: d.tags });
+export const cardOf = (d: DItem): CardData => ({ slug: d.slug, codes: d.codes, finish: [...new Set(d.variants.map((v) => v.finish || v.material).filter(Boolean))].join(" / "), img: d.img, tags: d.tags });

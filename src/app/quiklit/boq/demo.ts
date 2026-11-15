@@ -57,9 +57,9 @@ export const DEMO: { title: string; hot: string; runs: R[]; say: Record<Lang, st
     hi: "Sensor लगाना optional है। Master wardrobe में double doors हैं, इसलिए twin door sensor select कीजिए: कोई भी door खुलते ही light on हो जाएगी।",
     hg: "Sensor lagana optional hai. Master wardrobe mein double doors hain, isliye twin door sensor select kijiye: koi bhi door khulte hi light on ho jayegi." } },
   { title: "Your order list", hot: "out", runs: ALL, say: {
-    en: "This is your order list: profiles, accessory sets, connectors, sensors and power supplies, each with its order code.",
-    hi: "यह आपकी order list है: profiles, accessory sets, connectors, sensors और power supplies, हर एक अपने order code के साथ।",
-    hg: "Yeh aapki order list hai: profiles, accessory sets, connectors, sensors aur power supplies, har ek apne order code ke saath." } },
+    en: "This is your order list: profiles, accessory sets, connectors, sensors, power supplies and packing, each with its order code.",
+    hi: "यह आपकी order list है: profiles, accessory sets, connectors, sensors, power supplies और packing, हर एक अपने order code के साथ।",
+    hg: "Yeh aapki order list hai: profiles, accessory sets, connectors, sensors, power supplies aur packing, har ek apne order code ke saath." } },
   { title: "Packs and spare", hot: "spare", runs: ALL, say: {
     en: "Profiles are made in 3-metre lengths and packed two to a pack. Anything left after cutting is spare, not waste: use it in a drawer, a shelf or a niche.",
     hi: "Profile 3-metre lengths में बनता है और एक pack में दो lengths आती हैं। Cutting के बाद जो बचता है उसे waste न समझें: उसे drawer, shelf या छोटी cabinet में इस्तेमाल कर सकते हैं।",

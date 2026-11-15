@@ -5,7 +5,7 @@ import DecoShell from "@/components/deco/Shell";
 import { DecoCard } from "@/components/deco/Grid";
 import Listing from "@/components/deco/Listing";
 import { SelectButton } from "@/components/deco/Select";
-import { DECO, FAMILIES, MATERIALS, cardOf, familyOf, hrefOf, inFamily, titleOf, withTag, type DItem } from "@/lib/deco";
+import { DECO, FAMILIES, MATERIALS, cardOf, familyOf, hrefOf, inFamily, titleOf, withTag, type DItem, type DVariant } from "@/lib/deco";
 import { MANAGERS, wa } from "@/lib/site";
 
 export const dynamicParams = false;
@@ -19,8 +19,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const f = familyOf(slug); const m = MATS.find((x) => x.id === slug); const d = DECO.find((x) => x.slug === slug);
   if (f) return { title: `${f.name} · Decorative`, description: f.line };
   if (m) return { title: `${m.tag} · Decorative`, description: m.line };
-  if (d) return { title: `${titleOf(d)} · ${familyOf(d.family)?.one}`, description: `${d.variants[0].finish}. ${d.variants[0].material}. ${d.variants[0].size}.` };
+  if (d) return { title: `${titleOf(d)} · ${familyOf(d.family)?.one}`, description: [d.variants[0].finish, d.variants[0].material, d.variants[0].size].filter(Boolean).join(". ") + "." };
   return {};
+}
+
+// A line the catalogue words unclearly is left out until the decorative team corrects it.
+function Spec({ v }: { v: DVariant }) {
+  const rows = [["Finish", v.finish], ["Material", v.material], ["Size", v.size], ["Light source", v.source]].filter(([, x]) => x);
+  return <dl className="dspec">{rows.map(([k, x]) => <div key={k}><dt>{k}</dt><dd>{x}</dd></div>)}</dl>;
 }
 
 function Piece({ d }: { d: DItem }) {
@@ -42,12 +48,7 @@ function Piece({ d }: { d: DItem }) {
           <span className="cap grey">{fam.one}</span>
           <h1 className={d.codes.length > 1 ? "h40" : "h56"}>{name}</h1>
           {one ? (
-            <dl className="dspec">
-              <div><dt>Finish</dt><dd>{one.finish}</dd></div>
-              <div><dt>Material</dt><dd>{one.material}</dd></div>
-              <div><dt>Size</dt><dd>{one.size}</dd></div>
-              <div><dt>Light source</dt><dd>{one.source}</dd></div>
-            </dl>
+            <Spec v={one} />
           ) : (
             <p className="t20 grey" style={{ margin: 0 }}>{d.codes.length} versions of one design. Sizes and finishes are listed below.</p>
           )}
@@ -65,12 +66,7 @@ function Piece({ d }: { d: DItem }) {
             <div key={v.code} className="dvar">
               {v.dims[0] && <img src={v.dims[0].src} alt={`${v.code} with dimensions`} width={v.dims[0].w} height={v.dims[0].h} loading="lazy" />}
               <span className="h28">{v.code}</span>
-              <dl className="dspec">
-                <div><dt>Finish</dt><dd>{v.finish}</dd></div>
-                <div><dt>Material</dt><dd>{v.material}</dd></div>
-                <div><dt>Size</dt><dd>{v.size}</dd></div>
-                <div><dt>Light source</dt><dd>{v.source}</dd></div>
-              </dl>
+              <Spec v={v} />
               <SelectButton code={v.code} />
             </div>
           ))}
