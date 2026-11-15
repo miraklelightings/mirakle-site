@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import "@fontsource/hanken-grotesk/300.css";
-import "@fontsource/hanken-grotesk/400.css";
-import "@fontsource/hanken-grotesk/500.css";
+import "@fontsource/archivo/300.css";
+import "@fontsource/archivo/400.css";
+import "@fontsource/archivo/500.css";
 import "./globals.css";
 import WorldDock from "@/components/WorldDock";
 import Motion from "@/components/Motion";

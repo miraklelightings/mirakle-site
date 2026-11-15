@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { SelectButton } from "./Select";
 import type { CardData } from "@/lib/deco";
+import { U } from "@/lib/units";
 
 export function DecoCard({ c }: { c: CardData }) {
   return (
@@ -12,7 +13,7 @@ export function DecoCard({ c }: { c: CardData }) {
         <Link href={`/decorative/${c.slug}/`} className="dcard-name">{c.codes[0]}{c.codes.length > 1 && <span className="grey"> +{c.codes.length - 1}</span>}</Link>
         <SelectButton code={c.codes[0]} small />
       </div>
-      <span className="dcard-line">{c.finish}</span>
+      <span className="dcard-line"><U>{c.finish}</U></span>
     </div>
   );
 }

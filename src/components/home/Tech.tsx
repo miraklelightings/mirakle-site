@@ -22,7 +22,7 @@ export default function Tech() {
       <img src="/img/home_hero.jpg" alt="Recessed spotlights washing a plaster wall at dusk" />
       <div className="tech-shade" />
       <div className="wrap tech-copy">
-        <span className="chapter-num" style={{ color: "var(--on-dark-grey)" }}><span style={{ display: "inline-block", width: 56, height: 2, background: "var(--arch)", verticalAlign: "middle", marginRight: 14 }} />01 · Architectural &amp; Technical</span>
+        <span className="chapter-num" style={{ color: "var(--on-dark-grey)" }}><span style={{ display: "inline-block", width: 56, height: 2, background: "var(--arch)", verticalAlign: "middle", marginRight: 14 }} />01 · Architectural</span>
         <h2 className="h56" style={{ maxWidth: 760 }}>Light that serves the architecture.</h2>
         <p className="t20" style={{ margin: 0, maxWidth: 560, color: "rgba(246,244,240,.82)" }}>
           Architectural lighting solutions for professional projects, architects and interior designers.
@@ -36,7 +36,7 @@ export default function Tech() {
         </div>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 8 }}>
           <Link href="/architectural/" className="btn light">Explore the full range</Link>
-          <a href={wa("arch", "Hello MIRAKLE, I have an Architectural & Technical lighting enquiry.")} className="btn ghost-light">WhatsApp {MANAGERS.arch.name}</a>
+          <a href={wa("arch", "Hello MIRAKLE, I have an Architectural lighting enquiry.")} className="btn ghost-light">WhatsApp {MANAGERS.arch.name}</a>
         </div>
       </div>
       <span className="viz-tag">Visualisation · move your cursor</span>

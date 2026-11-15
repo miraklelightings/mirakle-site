@@ -4,7 +4,8 @@ import { PROFILES, PIECES, SENSORS, RULES, UNITS, PLACES, WIRING } from "@/lib/q
 import { buildBoq, boqText, toMm, type Run, type Extras, type Cct } from "@/lib/boq";
 import { MANAGERS } from "@/lib/site";
 import { ENQUIRY_URL } from "@/components/Enhance";
-import { DEMO, type Lang } from "./demo";
+import { DEMO, RECORDED, type Lang } from "./demo";
+import { U, capsText } from "@/lib/units";
 
 const blank = (id: number): Run => ({ id, place: "Wardrobe", room: "", profile: "1707", cct: "3K", length: 0, unit: "mm", units: 1, linesEach: 1, corners: 0, sensor: "" });
 const PRESETS: { label: string; runs: Omit<Run, "id">[] }[] = [
@@ -29,7 +30,19 @@ export default function Calculator() {
   // ---- guided demo
   const [step, setStep] = useState(-1);
   const [lang, setLang] = useState<Lang>("en");
-  const [voice, setVoice] = useState(true);
+  // Recorded narration plays when it has been added (see RECORDED in demo.ts); until then the voice is off by default.
+  const recorded: Record<string, number> = RECORDED;
+  const [voice, setVoice] = useState(RECORDED.en > 0 || RECORDED.hi > 0);
+  const [noVoice, setNoVoice] = useState(false);
+  const [voicesAt, setVoicesAt] = useState(0);
+  useEffect(() => {
+    // browsers load their voices a moment after the page; note when they arrive
+    if (!("speechSynthesis" in window)) return;
+    const ready = () => setVoicesAt(Date.now());
+    window.speechSynthesis.getVoices();
+    window.speechSynthesis.addEventListener("voiceschanged", ready);
+    return () => window.speechSynthesis.removeEventListener("voiceschanged", ready);
+  }, []);
   const [paused, setPaused] = useState(false);
   const saved = useRef<{ runs: Run[]; extras: Extras } | null>(null);
   const demoOn = step >= 0;
@@ -58,11 +71,21 @@ export default function Calculator() {
     const text = s.say[lang];
     const next = () => setStep((x) => (x >= 0 && x < DEMO.length - 1 ? x + 1 : x));
     let timer: ReturnType<typeof setTimeout> | undefined;
-    const canSpeak = voice && typeof window !== "undefined" && "speechSynthesis" in window;
-    if (canSpeak) {
+    setNoVoice(false);
+    const clipLang = lang === "en" ? "en" : "hi";                       // Hinglish is spoken as the Hindi recording
+    if (voice && (recorded[clipLang] || 0) > step) {
+      const a = new Audio(`/audio/demo/${clipLang}-${String(step + 1).padStart(2, "0")}.mp3`);
+      a.onended = () => { timer = setTimeout(next, 600); };
+      a.onerror = () => { timer = setTimeout(next, Math.max(4200, text.length * 62)); };
+      a.play().catch(() => { timer = setTimeout(next, Math.max(4200, text.length * 62)); });
+      return () => { clearTimeout(t0); if (timer) clearTimeout(timer); a.onended = null; a.onerror = null; a.pause(); };
+    }
+    const v = voice && typeof window !== "undefined" && "speechSynthesis" in window ? bestVoice(lang) : null;
+    if (voice && !v) setNoVoice(true);
+    if (v) {
       window.speechSynthesis.cancel();
       const u = new SpeechSynthesisUtterance(text);
-      u.lang = lang === "en" ? "en-IN" : "hi-IN";
+      u.voice = v; u.lang = v.lang;
       u.rate = 0.95;
       u.onend = () => { timer = setTimeout(next, 700); };
       window.speechSynthesis.speak(u);
@@ -72,7 +95,7 @@ export default function Calculator() {
     }
     timer = setTimeout(next, Math.max(4200, text.length * 62));
     return () => { clearTimeout(t0); if (timer) clearTimeout(timer); };
-  }, [step, lang, voice, paused]);
+  }, [step, lang, voice, paused, voicesAt]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const text = boqText(boq, { name: [who.name, who.firm].filter(Boolean).join(", "), project: who.project, city: who.city });
   const m = MANAGERS.ql;
@@ -107,14 +130,15 @@ export default function Calculator() {
           <div className="calc-demo-head">
             <span className="cap">Demo · {step + 1} of {DEMO.length} · {DEMO[step].title}</span>
             <span className="calc-demo-ctl">
-              <select aria-label="Language" value={lang} onChange={(e) => setLang(e.target.value as Lang)}><option value="en">English</option><option value="hi">हिंदी</option><option value="hg">Hinglish</option></select>
+              <select aria-label="Language" value={lang} onChange={(e) => setLang(e.target.value as Lang)}><option value="en">ENGLISH</option><option value="hi">हिंदी</option><option value="hg">HINGLISH</option></select>
               <button type="button" onClick={() => setVoice(!voice)} aria-pressed={voice}>{voice ? "Voice on" : "Voice off"}</button>
               <button type="button" onClick={() => setStep(Math.max(0, step - 1))} disabled={step === 0}>Back</button>
               <button type="button" onClick={() => setPaused(!paused)}>{paused ? "Play" : "Pause"}</button>
               <button type="button" onClick={() => setStep(Math.min(DEMO.length - 1, step + 1))} disabled={step === DEMO.length - 1}>Next</button>
             </span>
           </div>
-          <p className="t20" lang={lang === "en" ? "en" : "hi"}>{DEMO[step].say[lang]}</p>
+          <p className="t20" lang={lang === "en" ? "en" : "hi"}><U>{DEMO[step].say[lang]}</U></p>
+          {voice && noVoice && <span className="t14" style={{ color: "var(--on-dark-grey)" }}>This device has no Indian voice installed, so the demo is showing in text.</span>}
           <div className="calc-demo-bar"><i style={{ width: `${((step + 1) / DEMO.length) * 100}%` }} /></div>
           {step === DEMO.length - 1 && <button type="button" className="btn" onClick={stopDemo}>Clear the demo and start my project</button>}
         </div>
@@ -134,23 +158,23 @@ export default function Calculator() {
             <fieldset key={r.id} className="calc-run" {...H(`r${i}`)}>
               <div className="calc-run-head">
                 <span className="cap grey">Line {i + 1}</span>
-                {mm > 0 && <span className="t14 grey">{lines} {plural(lines, "lines")} × {n2(mm / 1000)} m = {n2((mm / 1000) * lines)} m{p.wpm ? ` · ${n2((mm / 1000) * lines * p.wpm)} W` : ""}</span>}
+                {mm > 0 && <span className="t14 grey"><U>{`${lines} ${plural(lines, "lines")} × ${n2(mm / 1000)} m = ${n2((mm / 1000) * lines)} m${p.wpm ? ` · ${n2((mm / 1000) * lines * p.wpm)} W` : ""}`}</U></span>}
                 {runs.length > 1 && !demoOn && <button type="button" className="calc-x no-print" onClick={() => setRuns((rs) => rs.filter((x) => x.id !== r.id))}>Remove</button>}
               </div>
               <label className="field" {...H(`r${i}-place`)}>Where is the light
-                <select value={r.place} onChange={(e) => set(r.id, { place: e.target.value })}>{PLACES.map((x) => <option key={x}>{x}</option>)}</select></label>
+                <select value={r.place} onChange={(e) => set(r.id, { place: e.target.value })}>{PLACES.map((x) => <option key={x} value={x}>{capsText(x)}</option>)}</select></label>
               <label className="field span2" {...H(`r${i}-place`)}>Your name for it
                 <input value={r.room} placeholder="e.g. Master bedroom wardrobe" onChange={(e) => set(r.id, { room: e.target.value })} /></label>
               <label className="field span2" {...H(`r${i}-profile`)}>Profile
                 <select value={r.profile} onChange={(e) => set(r.id, { profile: e.target.value, corners: 0 })}>
-                  {PROFILES.map((x) => <option key={x.key} value={x.key}>{x.name} · {x.size}{x.wpm ? ` · ${x.wpm} W/m` : ""}</option>)}
+                  {PROFILES.map((x) => <option key={x.key} value={x.key}>{capsText(`${x.name} · ${x.size}${x.wpm ? ` · ${x.wpm} W/m` : ""}`)}</option>)}
                 </select></label>
               {!p.noCct && <label className="field" {...H(`r${i}-profile`)}>Light colour
-                <select value={r.cct} onChange={(e) => set(r.id, { cct: e.target.value as Cct })}><option value="3K">{cctName("3K")}</option><option value="4K">{cctName("4K")}</option></select></label>}
+                <select value={r.cct} onChange={(e) => set(r.id, { cct: e.target.value as Cct })}><option value="3K">{capsText(cctName("3K"))}</option><option value="4K">{capsText(cctName("4K"))}</option></select></label>}
               <label className="field" {...H(`r${i}-len`)}>Length of one line
                 <span className="calc-len">
                   <input type="number" min={0} step="any" inputMode="decimal" value={r.length || ""} placeholder="0" onChange={(e) => set(r.id, { length: Number(e.target.value) })} />
-                  <select aria-label="Unit" value={r.unit} onChange={(e) => set(r.id, { unit: e.target.value })}>{Object.entries(UNITS).map(([k, u]) => <option key={k} value={k}>{u.label}</option>)}</select>
+                  <select aria-label="Unit" value={r.unit} onChange={(e) => set(r.id, { unit: e.target.value })}>{Object.entries(UNITS).map(([k, u]) => <option key={k} value={k}>{capsText(u.label)}</option>)}</select>
                 </span></label>
               <label className="field" {...H(`r${i}-qty`)}>How many of these
                 <input type="number" min={1} inputMode="numeric" value={r.units || ""} onChange={(e) => set(r.id, { units: Number(e.target.value) })} /></label>
@@ -160,7 +184,7 @@ export default function Calculator() {
                 <input type="number" min={0} inputMode="numeric" value={r.corners || ""} placeholder="0" onChange={(e) => set(r.id, { corners: Number(e.target.value) })} /></label>}
               <label className="field span2" {...H(`r${i}-sensor`)}>Sensor, one for each (optional)
                 <select value={r.sensor} onChange={(e) => set(r.id, { sensor: e.target.value })}>
-                  {SENSORS.map((s) => <option key={s.code} value={s.code}>{s.label}{s.use ? ` · ${s.use}` : ""}</option>)}
+                  {SENSORS.map((s) => <option key={s.code} value={s.code}>{capsText(`${s.label}${s.use ? ` · ${s.use}` : ""}`)}</option>)}
                 </select></label>
             </fieldset>
           );
@@ -177,7 +201,7 @@ export default function Calculator() {
               <div className="calc-xrow calc-xhead"><span /><span>3000K</span><span>4000K</span></div>
               {PIECES.filter((x) => x.group === g).map((it) => (
                 <div key={it.key} className="calc-xrow">
-                  <span>{it.name} <i className="grey">{it.w} W</i></span>
+                  <span><U>{it.name}</U> <i className="grey">{it.w} W</i></span>
                   {(["3K", "4K"] as const).map((c) => <input key={c} aria-label={`${it.name} ${c}`} type="number" min={0} inputMode="numeric" placeholder="0" value={extras[`${it.key}|${c}`] || ""} onChange={(e) => setX(`${it.key}|${c}`, e.target.value)} />)}
                 </div>
               ))}
@@ -186,8 +210,8 @@ export default function Calculator() {
           <div className="calc-extra-col">
             <span className="cap grey">Extension wires, when the supply sits further away</span>
             <div className="calc-xrow calc-xhead"><span /><span>Qty</span><span /></div>
-            <div className="calc-xrow"><span>To a light <i className="grey">2000 mm</i></span><input aria-label="Extension wire" type="number" min={0} placeholder="0" value={extras.ext || ""} onChange={(e) => setX("ext", e.target.value)} /><span /></div>
-            <div className="calc-xrow"><span>To a sensor <i className="grey">1000 mm</i></span><input aria-label="Sensor extension wire" type="number" min={0} placeholder="0" value={extras.sensorExt || ""} onChange={(e) => setX("sensorExt", e.target.value)} /><span /></div>
+            <div className="calc-xrow"><span>To a light <i className="grey">2000 <span className="u">mm</span></i></span><input aria-label="Extension wire" type="number" min={0} placeholder="0" value={extras.ext || ""} onChange={(e) => setX("ext", e.target.value)} /><span /></div>
+            <div className="calc-xrow"><span>To a sensor <i className="grey">1000 <span className="u">mm</span></i></span><input aria-label="Sensor extension wire" type="number" min={0} placeholder="0" value={extras.sensorExt || ""} onChange={(e) => setX("sensorExt", e.target.value)} /><span /></div>
           </div>
         </div>
       </details>
@@ -201,7 +225,7 @@ export default function Calculator() {
           <>
             <div className="calc-tiles">
               <div><b>{boq.lights}</b><span className="cap grey">{plural(boq.lights, "Lights")}</span></div>
-              <div><b>{n2(boq.metres)} m</b><span className="cap grey">Of light</span></div>
+              <div><b>{n2(boq.metres)} <span className="u">m</span></b><span className="cap grey">Of light</span></div>
               <div><b>{Math.round(boq.watts)} W</b><span className="cap grey">Total load</span></div>
               <div><b>{cap ? `${Math.round((boq.watts / cap) * 100)}%` : "–"}</b><span className="cap grey">Of safe supply load</span></div>
             </div>
@@ -214,8 +238,8 @@ export default function Calculator() {
                     {g.lines.map((l) => (
                       <tr key={l.code}>
                         <td className="calc-code">{l.code}</td>
-                        <td className="grey">{l.desc}{l.note && <em>{l.note}</em>}</td>
-                        <td className="num">{l.qty} {plural(l.qty, l.unit)}</td>
+                        <td className="grey"><U>{l.desc}</U>{l.note && <em><U>{l.note}</U></em>}</td>
+                        <td className="num"><U>{`${l.qty} ${plural(l.qty, l.unit)}`}</U></td>
                       </tr>
                     ))}
                   </tbody>
@@ -226,19 +250,19 @@ export default function Calculator() {
             {boq.spare.some((s) => s.orderM - s.needM > 0.3) && (
               <div className="calc-spare" {...H("spare")}>
                 <span className="cap">Spare profile, not waste</span>
-                <p className="t16 grey">Profiles come in 3 m lengths, two to a pack. What is left after cutting can light a drawer, a shelf or a niche.</p>
+                <p className="t16 grey"><U>Profiles come in 3 m lengths, two to a pack. What is left after cutting can light a drawer, a shelf or a niche.</U></p>
                 <ul>
                   {boq.spare.filter((s) => s.orderM - s.needM > 0.3).map((s) => (
-                    <li key={s.code}><b>{s.code}</b><span>{n2(s.orderM - s.needM)} m spare: {summarise(s.offcuts)}</span></li>
+                    <li key={s.code}><b>{s.code}</b><span><U>{`${n2(s.orderM - s.needM)} m spare: ${summarise(s.offcuts)}`}</U></span></li>
                   ))}
                 </ul>
               </div>
             )}
 
-            {boq.warnings.length > 0 && <ul className="calc-warn">{boq.warnings.map((w) => <li key={w}>{w}</li>)}</ul>}
+            {boq.warnings.length > 0 && <ul className="calc-warn">{boq.warnings.map((w) => <li key={w}><U>{w}</U></li>)}</ul>}
 
             <p className="t14 grey calc-rules">
-              How this is counted: one accessory set for each light; a supply is loaded to no more than {RULES.loadPct}% of its rating (51 W on 60 W, 85 W on 100 W, 127 W on 150 W); one light for each light port, with the {WIRING.splitter.ports}-port splitter when you need more; one sensor to a supply; profiles in 6 m packs, with one round packing tube for every {RULES.tubeM} m. Cutting allows {RULES.cutMm} mm for each saw cut. Prices are on enquiry. Our team checks every list before quoting.
+              <U>{`How this is counted: one accessory set for each light; a supply is loaded to no more than ${RULES.loadPct}% of its rating (51 W on 60 W, 85 W on 100 W, 127 W on 150 W); one light for each light port, with the ${WIRING.splitter.ports}-port splitter when you need more; one sensor to a supply; profiles in 6 m packs, with one round packing tube for every ${RULES.tubeM} m. Cutting allows ${RULES.cutMm} mm for each saw cut. Prices are on enquiry. Our team checks every list before quoting.`}</U>
             </p>
 
             <div className="calc-send no-print" {...H("send")}>
@@ -265,6 +289,17 @@ export default function Calculator() {
       </section>
     </div>
   );
+}
+
+// The best voice this device has for the language: an Indian English voice for English and Hinglish,
+// a Hindi voice for Hindi. Any other accent reads the script badly, so without one the demo stays in text.
+function bestVoice(lang: Lang): SpeechSynthesisVoice | null {
+  const all = window.speechSynthesis.getVoices();
+  const want = lang === "hi" ? "hi-in" : "en-in";
+  const list = all.filter((v) => v.lang.replace("_", "-").toLowerCase() === want);
+  if (!list.length) return null;
+  const rank = (v: SpeechSynthesisVoice) => (/natural|neural|premium|enhanced/i.test(v.name) ? 4 : 0) + (/google|microsoft|siri/i.test(v.name) ? 2 : 0) + (v.localService ? 0 : 1);
+  return [...list].sort((a, b) => rank(b) - rank(a))[0];
 }
 
 function summarise(off: number[]) {

@@ -48,7 +48,7 @@ export default function RoomLab() {
             <input type="range" min={2700} max={6500} step={100} value={k} onChange={(e) => setK(Number(e.target.value))} className="lab-range cct" aria-label="Colour temperature in kelvin" />
           </label>
           <p className="t14" style={{ margin: 0, color: "var(--on-dark-grey)" }}>
-            The fittings are drawn as small as they are: TITAN 12 W needs a Ø60 mm cut-out. Beams of 24°, 36° and 60°. <Link href="/architectural/titan/#configure" style={{ color: "var(--on-dark)" }}>Configure TITAN →</Link>
+            The fittings are drawn as small as they are: TITAN 12 W needs a Ø60 <span className="u">mm</span> cut-out. Beams of 24°, 36° and 60°. <Link href="/architectural/titan/#configure" style={{ color: "var(--on-dark)" }}>Configure TITAN →</Link>
           </p>
         </div>
       </div>

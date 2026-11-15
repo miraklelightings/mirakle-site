@@ -7,6 +7,7 @@ import Listing from "@/components/deco/Listing";
 import { SelectButton } from "@/components/deco/Select";
 import { DECO, FAMILIES, MATERIALS, cardOf, familyOf, hrefOf, inFamily, titleOf, withTag, type DItem, type DVariant } from "@/lib/deco";
 import { MANAGERS, wa } from "@/lib/site";
+import { U } from "@/lib/units";
 
 export const dynamicParams = false;
 // "marble" has its own page file, as does the old "pendants" address.
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 // A line the catalogue words unclearly is left out until the decorative team corrects it.
 function Spec({ v }: { v: DVariant }) {
   const rows = [["Finish", v.finish], ["Material", v.material], ["Size", v.size], ["Light source", v.source]].filter(([, x]) => x);
-  return <dl className="dspec">{rows.map(([k, x]) => <div key={k}><dt>{k}</dt><dd>{x}</dd></div>)}</dl>;
+  return <dl className="dspec">{rows.map(([k, x]) => <div key={k}><dt>{k}</dt><dd><U>{x}</U></dd></div>)}</dl>;
 }
 
 function Piece({ d }: { d: DItem }) {
@@ -76,7 +77,7 @@ function Piece({ d }: { d: DItem }) {
       {one && dims.length > 0 && (
         <section className="ddims">
           <div className="wrap ddims-in">
-            <div className="ddims-copy"><span className="cap grey">Dimensions</span><span className="h28">{one.size}</span><span className="t14 grey">As drawn in the catalogue. Suspension lengths can be set on site where the piece allows it; ask us before ordering.</span></div>
+            <div className="ddims-copy"><span className="cap grey">Dimensions</span><span className="h28"><U>{one.size}</U></span><span className="t14 grey">As drawn in the catalogue. Suspension lengths can be set on site where the piece allows it; ask us before ordering.</span></div>
             <div className="ddims-imgs">{dims.map((x) => <img key={x.src} src={x.src} alt={`${x.code} with dimensions`} width={x.w} height={x.h} loading="lazy" />)}</div>
           </div>
         </section>

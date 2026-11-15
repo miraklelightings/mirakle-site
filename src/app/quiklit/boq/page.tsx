@@ -17,7 +17,7 @@ export default function Page() {
           <p className="t20 grey" style={{ margin: 0 }}>Tell us where the light goes and how long each line is. The order list builds itself: profile packs, accessory sets, connectors, sensors and 24V supplies, each with its order code.</p>
         </div>
         <div className="calc-facts no-print">
-          <div><b>3 m lengths</b><span className="t14 grey">Every profile, packed two to a pack.</span></div>
+          <div><b>3 <span className="u">m</span> lengths</b><span className="t14 grey">Every profile, packed two to a pack.</span></div>
           <div><b>One set for each light</b><span className="t14 grey">Wired end cap, end cap and clamps.</span></div>
           <div><b>85% supply load</b><span className="t14 grey">51 W, 85 W or 127 W, as the catalogue says.</span></div>
           <div><b>No prices here</b><span className="t14 grey">Send the list; the QuikLit team quotes it.</span></div>

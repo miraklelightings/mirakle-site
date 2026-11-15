@@ -1,9 +1,11 @@
 import Footer from "./Footer";
 import Enhance from "./Enhance";
+import { unitsInHtml } from "@/lib/units";
 
 // A designed page. `children` (optional) are placed at `slot`: "finder" swaps out the old COB finder,
 // "end" sits just before the page footer.
 export default function StaticPage({ css, body, footer, page, slot, children }: { css: string; body: string; footer?: boolean; page: string; slot?: "finder" | "end"; children?: React.ReactNode }) {
+  body = unitsInHtml(body);
   let before = body, after = "";
   if (children) {
     // drop the page's outer wrapper so each half is well-formed HTML on its own

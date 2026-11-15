@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { CHAPTERS, QL, TECH, grouped, hrefOf, title, type Product } from "@/lib/products";
+import { U } from "@/lib/units";
 
 export function Card({ p }: { p: Product }) {
   return (
     <Link href={hrefOf(p)} className="pcard">
       <span className={"pcard-img" + (p.kind === "driver" || p.kind === "ql" ? " fit" : "")}>{(p.card || p.hero) && <img src={(p.card || p.hero)!.src} alt={title(p)} loading="lazy" />}</span>
       <span className="pcard-name">{p.name}</span>
-      {(p.tagline || p.intro) && <span className="pcard-line">{p.tagline || p.intro.split(". ")[0] + "."}</span>}
+      {(p.tagline || p.intro) && <span className="pcard-line"><U>{p.tagline || p.intro.split(". ")[0] + "."}</U></span>}
     </Link>
   );
 }
@@ -33,7 +34,7 @@ export default function RangeIndex({ only, heading = true }: { only?: string[]; 
           <div key={c.id} id={c.id} className="wrap range-chapter">
             <div className="range-chapter-head">
               <span className="h28"><span className="grey">{c.n}</span>&nbsp; {c.name}</span>
-              <p className="t14 grey" style={{ margin: 0, maxWidth: 560 }}>{c.line}</p>
+              <p className="t14 grey" style={{ margin: 0, maxWidth: 560 }}><U>{c.line}</U></p>
             </div>
             {grouped(list).map((g) => (
               <div key={g.group} className="range-group">

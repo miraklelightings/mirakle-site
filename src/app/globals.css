@@ -1,11 +1,11 @@
 :root{
   --ink:#1A1918; --grey:#6B6660; --paper:#F6F4F0; --stone:#EDE9E3; --ground:#E3DED6; --rule:#DCD6CD;
   --on-dark:#F6F4F0; --on-dark-grey:#A39D94;
-  --arch:#A8421F; --deco:#B08A4E; --ql:linear-gradient(90deg,#F43F5E,#A855F7);
+  --arch:var(--ink); --deco:var(--ink); --ql:var(--ink);
   --wrap:1280px;
 }
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--paper);color:var(--ink);font-family:"Hanken Grotesk",system-ui,sans-serif;font-weight:400;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+html,body{margin:0;background:var(--paper);color:var(--ink);font-family:"Archivo",system-ui,sans-serif;font-weight:400;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
 a{color:inherit}
 img{display:block;max-width:100%}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 32px}
@@ -348,9 +348,9 @@ html,body{overflow-x:clip}
 .calc-run .field.span2{grid-column:span 2}
 .calc-run-head{grid-column:1/-1;display:flex;gap:16px;align-items:baseline;flex-wrap:wrap}
 .calc-x{font:inherit;font-size:11px;margin-left:auto;background:none;border:0;color:var(--grey);text-decoration:underline;cursor:pointer;padding:0}
-.calc-len{display:grid;grid-template-columns:1fr 104px;gap:4px}
+.calc-len{display:grid;grid-template-columns:1fr 124px;gap:4px}
 .calc-add{align-self:flex-start;margin-top:12px}
-.calc [data-hot="1"]{outline:2px solid #A855F7;outline-offset:3px;background-color:#fff;transition:outline-color .3s}
+.calc [data-hot="1"]{outline:2px solid #1A1918;outline-offset:3px;background-color:#fff;transition:outline-color .3s}
 .calc-extra{border:1px solid var(--rule);padding:0 22px}
 .calc-extra summary{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:18px 0;cursor:pointer;list-style:none}
 .calc-extra summary::-webkit-details-marker{display:none}
@@ -409,3 +409,12 @@ html,body{overflow-x:clip}
   .calc-table tr.calc-g{display:block;padding:18px 0 6px;border-bottom:1px solid var(--ink)}
   .calc-table tr.calc-g td{padding:0;border:0}
 }
+
+/* ---------- capitals everywhere (brand rule, 15 Nov 2026). Units of measure keep their own case. ---------- */
+body{text-transform:uppercase;letter-spacing:.025em}
+.u{text-transform:none}
+input,textarea,select{text-transform:none;letter-spacing:.02em}
+::placeholder{text-transform:uppercase}
+.t20{letter-spacing:.02em}
+.calc-demo p[lang="hi"]{letter-spacing:0}
+input:not([type="email"]):not([type="number"]),textarea{text-transform:uppercase}

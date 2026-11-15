@@ -65,10 +65,10 @@ export function SelectionForm() {
       <div className="dform-fields">
         <label className="field">Your name<input value={f.name} autoComplete="name" onChange={(e) => setF({ ...f, name: e.target.value })} /></label>
         <label className="field">Mobile<input value={f.mobile} inputMode="tel" autoComplete="tel" onChange={(e) => setF({ ...f, mobile: e.target.value })} /></label>
-        <label className="field">I am<select value={f.role} onChange={(e) => setF({ ...f, role: e.target.value })}><option>Interior designer</option><option>Architect</option><option>Homeowner</option><option>Hotel or restaurant</option></select></label>
+        <label className="field">I am<select value={f.role} onChange={(e) => setF({ ...f, role: e.target.value })}><option value="Interior designer">INTERIOR DESIGNER</option><option value="Architect">ARCHITECT</option><option value="Homeowner">HOMEOWNER</option><option value="Hotel or restaurant">HOTEL OR RESTAURANT</option></select></label>
         <label className="field">City<input value={f.city} onChange={(e) => setF({ ...f, city: e.target.value })} /></label>
-        <label className="field">Project<select value={f.project} onChange={(e) => setF({ ...f, project: e.target.value })}><option>Residential</option><option>Hospitality</option><option>Commercial</option></select></label>
-        <label className="field">When<select value={f.when} onChange={(e) => setF({ ...f, when: e.target.value })}><option>Within a month</option><option>1–3 months</option><option>Later</option></select></label>
+        <label className="field">Project<select value={f.project} onChange={(e) => setF({ ...f, project: e.target.value })}><option value="Residential">RESIDENTIAL</option><option value="Hospitality">HOSPITALITY</option><option value="Commercial">COMMERCIAL</option></select></label>
+        <label className="field">When<select value={f.when} onChange={(e) => setF({ ...f, when: e.target.value })}><option value="Within a month">WITHIN A MONTH</option><option value="1–3 months">1–3 MONTHS</option><option value="Later">LATER</option></select></label>
         <div className="dform-btns">
           <button type="button" className="btn" disabled={state === "sending" || state === "ok"} onClick={send}>{state === "ok" ? "Sent ✓" : state === "sending" ? "Sending…" : "Send to the Decorative team"}</button>
           <a className="btn ghost" href={`https://wa.me/${m.wa}?text=${encodeURIComponent(text)}`} target="_blank" rel="noopener">WhatsApp {m.name.split(" ")[0]}</a>

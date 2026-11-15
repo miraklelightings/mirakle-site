@@ -2,6 +2,9 @@ import type { Run } from "@/lib/boq";
 
 // The guided walkthrough. Wording follows the QuikLit team's own demo script, in three languages.
 export type Lang = "en" | "hi" | "hg";
+// How many recorded narration clips exist for each language, as /audio/demo/en-01.mp3 … and /audio/demo/hi-01.mp3 …
+// Zero means none yet: the demo then shows text, and speaks only if the visitor turns the voice on.
+export const RECORDED = { en: 14, hi: 14 };
 type R = Omit<Run, "id">;
 const base: R = { place: "Wardrobe", room: "", profile: "1707", cct: "3K", length: 0, unit: "mm", units: 1, linesEach: 1, corners: 0, sensor: "" };
 const A1: R = { ...base, room: "Master bedroom wardrobe" };

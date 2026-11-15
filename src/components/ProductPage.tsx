@@ -4,22 +4,23 @@ import Footer from "@/components/Footer";
 import { Card } from "@/components/RangeIndex";
 import { MANAGERS, wa, type World } from "@/lib/site";
 import { hrefOf, title, type Product, type Table } from "@/lib/products";
+import { U } from "@/lib/units";
 
 function TableView({ t }: { t: Table }) {
   return (
     <div className="pt">
-      <span className="cap grey">{t.title}</span>
+      <span className="cap grey"><U>{t.title}</U></span>
       {t.pairs ? (
         <dl className="pt-pairs">
           {t.pairs.map(([k, v], i) => (
-            <div key={i}><dt>{k}</dt><dd>{v.split("\n").map((l, j) => <span key={j}>{l}</span>)}</dd></div>
+            <div key={i}><dt><U>{k}</U></dt><dd>{v.split("\n").map((l, j) => <span key={j}><U>{l}</U></span>)}</dd></div>
           ))}
         </dl>
       ) : (
         <div className="pt-scroll">
           <table>
-            {t.head && <thead><tr>{t.head.map((h, i) => <th key={i}>{h}</th>)}</tr></thead>}
-            <tbody>{(t.rows || []).map((r, i) => <tr key={i}>{r.map((c, j) => <td key={j}>{c}</td>)}</tr>)}</tbody>
+            {t.head && <thead><tr>{t.head.map((h, i) => <th key={i}><U>{h}</U></th>)}</tr></thead>}
+            <tbody>{(t.rows || []).map((r, i) => <tr key={i}>{r.map((c, j) => <td key={j}><U>{c}</U></td>)}</tr>)}</tbody>
           </table>
         </div>
       )}
@@ -27,7 +28,7 @@ function TableView({ t }: { t: Table }) {
   );
 }
 
-// Architectural & Technical pages do not publish ordering codes; they are sent on request.
+// Architectural pages do not publish ordering codes; they are sent on request.
 const CODE_COL = /^(code|erp code|order code)$/i;
 function withoutCodes(t: Table): Table | null {
   if (!t.head || !t.rows || !t.head.some((h) => CODE_COL.test(h))) return t;
@@ -41,7 +42,7 @@ export default function ProductPage({ p: raw, siblings, world }: { p: Product; s
   const p = world === "arch" ? { ...raw, tables: raw.tables.map(withoutCodes).filter((t): t is Table => Boolean(t)) } : raw;
   const m = MANAGERS[world];
   const name = title(p);
-  const back = world === "ql" ? { href: "/quiklit/", label: "QuikLit" } : { href: "/architectural/", label: "Architectural & Technical" };
+  const back = world === "ql" ? { href: "/quiklit/", label: "QuikLit" } : { href: "/architectural/", label: "Architectural" };
   const nav = world === "ql"
     ? [{ label: "Profiles", href: "/quiklit/#profiles" }, { label: "BOQ calculator", href: "/quiklit/boq/" }, { label: "Downloads", href: "/downloads/" }]
     : [{ label: "Magnetic track", href: "/architectural/#magnetic" }, { label: "Spotlights", href: "/architectural/#spotlights" }, { label: "Linear", href: "/architectural/#linear" }, { label: "LED drivers", href: "/architectural/#drivers" }];
@@ -61,9 +62,9 @@ export default function ProductPage({ p: raw, siblings, world }: { p: Product; s
           <div className="pp-copy">
             <span className="pp-line" style={{ background: world === "ql" ? "var(--ql)" : "var(--arch)" }} />
             <h1 className="h56">{name}</h1>
-            {p.tagline && <p className="h28" style={{ margin: 0 }}>{p.tagline}</p>}
-            <p className="t20 grey" style={{ margin: 0 }}>{p.intro}</p>
-            {p.where && <p style={{ margin: 0 }}><span className="cap grey">Where it goes · </span>{p.where}</p>}
+            {p.tagline && <p className="h28" style={{ margin: 0 }}><U>{p.tagline}</U></p>}
+            <p className="t20 grey" style={{ margin: 0 }}><U>{p.intro}</U></p>
+            {p.where && <p style={{ margin: 0 }}><span className="cap grey">Where it goes · </span><U>{p.where}</U></p>}
             <div className="pp-cta">
               <Link href={enquire} className="btn">Enquire about {p.name}</Link>
               <a href={wa(world, `Hello MIRAKLE, I would like details of ${name}.`)} className="btn ghost">WhatsApp {m.name}</a>
@@ -76,14 +77,14 @@ export default function ProductPage({ p: raw, siblings, world }: { p: Product; s
         {p.highlights && p.highlights.length > 0 && (
           <section className="wrap pp-hl">
             {p.highlights.map((h) => (
-              <div key={h.label}><span className="cap grey">{h.label}</span>{h.lines.map((l, k) => <span key={k} className="t20">{l}</span>)}</div>
+              <div key={h.label}><span className="cap grey">{h.label}</span>{h.lines.map((l, k) => <span key={k} className="t20"><U>{l}</U></span>)}</div>
             ))}
           </section>
         )}
 
         {p.badges.length > 0 && (
           <section className="wrap pp-badges">
-            {p.badges.map(([a, b], k) => <div key={k}><b>{a}</b><span className="cap grey">{b}</span></div>)}
+            {p.badges.map(([a, b], k) => <div key={k}><b><U>{a}</U></b><span className="cap grey"><U>{b}</U></span></div>)}
           </section>
         )}
 
@@ -92,12 +93,12 @@ export default function ProductPage({ p: raw, siblings, world }: { p: Product; s
             <div className="wrap pp-data-grid">
               <div className="pp-data-side">
                 <h2 className="h40">Technical data</h2>
-                {p.techIntro && <p className="t14 grey" style={{ margin: 0 }}>{p.techIntro}</p>}
+                {p.techIntro && <p className="t14 grey" style={{ margin: 0 }}><U>{p.techIntro}</U></p>}
                 {p.photo && <img src={p.photo.src} alt={name + " detail"} width={p.photo.w} height={p.photo.h} loading="lazy" />}
               </div>
               <div className="pp-tables">
                 {p.tables.map((t, k) => <TableView key={k} t={t} />)}
-                {p.notes.map((n, k) => <p key={k} className="t14 grey" style={{ margin: 0 }}>{n}</p>)}
+                {p.notes.map((n, k) => <p key={k} className="t14 grey" style={{ margin: 0 }}><U>{n}</U></p>)}
               </div>
             </div>
           </section>
@@ -105,7 +106,7 @@ export default function ProductPage({ p: raw, siblings, world }: { p: Product; s
 
         {p.drawings.length > 0 && (
           <section className="wrap pp-draw">
-            <span className="cap grey">Drawings and light distribution · dimensions in mm</span>
+            <span className="cap grey">Drawings and light distribution · dimensions in <span className="u">mm</span></span>
             {p.drawings.map((d) => <img key={d.src} src={d.src} alt={name + " drawing"} width={d.w} height={d.h} loading="lazy" />)}
           </section>
         )}

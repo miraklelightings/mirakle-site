@@ -28,11 +28,11 @@ export default function Home() {
           <div className="worlds" id="worlds">
             <div className="world">
               <img src="/img/home_lobby.jpg" alt="A hotel lobby wall grazed by linear light, track spotlights on the desk" />
-              <Link href="/architectural/" aria-label="Architectural and Technical" style={{ position: "absolute", inset: 0, zIndex: 1 }} />
+              <Link href="/architectural/" aria-label="Architectural" style={{ position: "absolute", inset: 0, zIndex: 1 }} />
               <div className="world-copy" style={{ zIndex: 2, pointerEvents: "none" }}>
                 <span className="world-line" style={{ background: "var(--arch)" }} />
                 <span className="cap" style={{ color: "var(--on-dark-grey)" }}>01</span>
-                <span className="h40">Architectural &amp; Technical</span>
+                <span className="h40">Architectural</span>
                 <span className="world-desc">Magnetic track, COB spotlights, linear light and LED drivers for professional projects, architects and interior designers.</span>
                 <span className="world-tag">1000+ SKUs · Locally assembled</span>
                 <span className="world-cta" style={{ pointerEvents: "auto" }}><Link href="/architectural/" className="btn light">Explore</Link></span>
