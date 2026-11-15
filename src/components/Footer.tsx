@@ -27,9 +27,9 @@ export default function Footer() {
       </div>
       <div className="wrap t14" style={{ borderTop: "1px solid #33302d", paddingTop: 20, paddingBottom: 28, display: "flex", flexWrap: "wrap", gap: 20, color: "var(--on-dark-grey)" }}>
         <span>MIRAKLE is a brand of Hrisha Lighting Projects LLP, Ahmedabad 380054.</span>
-        <span style={{ marginLeft: "auto", display: "flex", gap: 20 }}>
+        <span style={{ marginLeft: "auto", display: "flex", gap: 20, flexWrap: "wrap" }}>
           <Link href="/downloads/">Downloads</Link><Link href="/contact/">Contact</Link><Link href="/about/">About</Link>
-          <a href="https://www.instagram.com/hrisha_lightings">Instagram</a><a href="https://www.witlamps.com">WIT Lamps</a>
+          <a href="https://www.instagram.com/hrisha_lightings">Instagram · @hrisha_lightings</a><a href="https://www.witlamps.com">WIT Lamps</a>
         </span>
       </div>
     </footer>

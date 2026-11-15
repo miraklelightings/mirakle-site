@@ -1,0 +1,1652 @@
+[
+{
+"slug": "quiklit-1707",
+"name": "QUIKLIT-1707",
+"chapter": "QuikLit",
+"family": "QuikLit",
+"kind": "ql",
+"group": "Solderless LED profiles",
+"page": 12,
+"ext": "/quiklit/1707/",
+"tagline": "",
+"intro": "Solder-free 17 × 7 mm recessed profile with an opal cover for a dot-free line of light. Can be cut anywhere.",
+"where": "Recessed in a groove: under shelves and inside cabinets.",
+"badges": [
+[
+"16 W/m",
+"Power"
+],
+[
+"3000K · 4000K",
+"Colour"
+],
+[
+"24V DC",
+"Voltage"
+],
+[
+"CRI 90",
+"Colour rendering"
+],
+[
+"5 years",
+"Warranty"
+]
+],
+"hero": {
+"src": "/q/quiklit-1707.jpg",
+"w": 1248,
+"h": 927
+},
+"card": {
+"src": "/q/quiklit-1707_c.jpg",
+"w": 822,
+"h": 437
+},
+"tables": [
+{
+"title": "At a glance",
+"pairs": [
+[
+"Cover",
+"Opal"
+],
+[
+"Light",
+"Double-PCB SMD LED"
+],
+[
+"Body",
+"Aluminium, roman grey"
+],
+[
+"Groove",
+"17 × 7 mm"
+]
+]
+},
+{
+"title": "What you need",
+"pairs": [
+[
+"The profile",
+"QUIKLIT-1707-3K · 3000K\nQUIKLIT-1707-4K · 4000K\nRoman grey aluminium · 3 m lengths."
+],
+[
+"Accessory set",
+"QUIKLIT-1707-ACC\n1 wired end cap (1800 mm wire), 1 end cap, 2 clamps."
+],
+[
+"Power supply",
+"QUIKPOWER-24V-60W / 100W / 150W\nChoose by the total watts of the lights."
+]
+]
+},
+{
+"title": "Connectors · ordered separately",
+"pairs": [
+[
+"QUIKLIT-1707-CORNER CONNECTOR",
+"Joins two lengths at a corner."
+],
+[
+"QUIKLIT-1707-STRAIGHT JOINTER",
+"Joins two lengths in a straight line."
+]
+]
+}
+],
+"notes": [
+"Optional: QUIKSENS sensors · splitter and extension wires · all accessories."
+],
+"drawings": []
+},
+{
+"slug": "quiktilt-1010",
+"name": "QUIKTILT-1010",
+"chapter": "QuikLit",
+"family": "QuikLit",
+"kind": "ql",
+"group": "Solderless LED profiles",
+"page": 13,
+"ext": null,
+"tagline": "",
+"intro": "Recessed 10 × 10 mm profile with a light barrel that turns through 150°. Fix it in the groove, then aim the light.",
+"where": "",
+"badges": [
+[
+"14 W/m",
+"Power"
+],
+[
+"3000K · 4000K",
+"Colour"
+],
+[
+"24V DC",
+"Voltage"
+],
+[
+"CRI 90+",
+"Colour rendering"
+],
+[
+"150°",
+"Rotation"
+],
+[
+"5 years",
+"Warranty"
+]
+],
+"hero": {
+"src": "/q/quiktilt-1010.jpg",
+"w": 1248,
+"h": 927
+},
+"card": {
+"src": "/q/quiktilt-1010_c.jpg",
+"w": 900,
+"h": 439
+},
+"tables": [
+{
+"title": "At a glance",
+"pairs": [
+[
+"Groove",
+"10.3 × 9.5 mm"
+]
+]
+},
+{
+"title": "What you need",
+"pairs": [
+[
+"The profile",
+"QUIKTILT-1010-150-3K · 3000K\nQUIKTILT-1010-150-4K · 4000K\nRoman grey aluminium · 3 m lengths."
+],
+[
+"Accessory set",
+"QUIKTILT-1010-150-ACC\n1 wired end cap (1800 mm wire), 1 end cap, 2 clamps."
+],
+[
+"Power supply",
+"QUIKPOWER-24V-60W / 100W / 150W\nChoose by the total watts of the lights."
+]
+]
+}
+],
+"notes": [
+"Optional: QUIKSENS sensors · splitter and extension wires · all accessories."
+],
+"drawings": []
+},
+{
+"slug": "quiklit-0609",
+"name": "QUIKLIT-0609",
+"chapter": "QuikLit",
+"family": "QuikLit",
+"kind": "ql",
+"group": "Solderless LED profiles",
+"page": 15,
+"ext": null,
+"tagline": "",
+"intro": "Sleek, solder-free 6 × 9 mm profile with ultra-compact LED efficiency.",
+"where": "Recessed in a groove: under shelves and inside cabinets.",
+"badges": [
+[
+"9 W/m",
+"Power"
+],
+[
+"3000K · 4000K",
+"Colour"
+],
+[
+"24V DC",
+"Voltage"
+],
+[
+"CRI 90",
+"Colour rendering"
+],
+[
+"5 years",
+"Warranty"
+]
+],
+"hero": {
+"src": "/q/quiklit-0609.jpg",
+"w": 1248,
+"h": 927
+},
+"card": {
+"src": "/q/quiklit-0609_c.jpg",
+"w": 900,
+"h": 369
+},
+"tables": [
+{
+"title": "At a glance",
+"pairs": [
+[
+"Cover",
+"PC"
+],
+[
+"Size",
+"6 × 9 mm"
+],
+[
+"Body",
+"Roman grey"
+],
+[
+"Groove",
+"6 × 9 mm"
+]
+]
+},
+{
+"title": "What you need",
+"pairs": [
+[
+"The profile",
+"QUIKLIT-0609-3K · 3000K\nQUIKLIT-0609-4K · 4000K\nRoman grey · PC cover included · 3 m lengths."
+],
+[
+"Accessory set",
+"QUIKLIT-0609-ACC\n1 wired end cap (1800 mm wire), 1 end cap, 2 clamps."
+],
+[
+"Power supply",
+"QUIKPOWER-24V-60W / 100W / 150W\nChoose by the total watts of the lights."
+]
+]
+},
+{
+"title": "Connectors · ordered separately",
+"pairs": [
+[
+"QUIKLIT-0609-CORNER CONNECTOR",
+"Joins two lengths at a corner."
+]
+]
+}
+],
+"notes": [
+"Optional: QUIKSENS sensors · splitter and extension wires · all accessories."
+],
+"drawings": []
+},
+{
+"slug": "quiklit-0809",
+"name": "QUIKLIT-0809",
+"chapter": "QuikLit",
+"family": "QuikLit",
+"kind": "ql",
+"group": "Solderless LED profiles",
+"page": 16,
+"ext": null,
+"tagline": "",
+"intro": "Solder-free 8 × 9 mm profile for clean, modern cabinet lighting.",
+"where": "Recessed in a groove: under shelves and inside cabinets.",
+"badges": [
+[
+"9 W/m",
+"Power"
+],
+[
+"3000K · 4000K",
+"Colour"
+],
+[
+"24V DC",
+"Voltage"
+],
+[
+"CRI 90",
+"Colour rendering"
+],
+[
+"5 years",
+"Warranty"
+]
+],
+"hero": {
+"src": "/q/quiklit-0809.jpg",
+"w": 1248,
+"h": 927
+},
+"card": {
+"src": "/q/quiklit-0809_c.jpg",
+"w": 609,
+"h": 424
+},
+"tables": [
+{
+"title": "At a glance",
+"pairs": [
+[
+"Cover",
+"PC"
+],
+[
+"Size",
+"8 × 9 mm"
+],
+[
+"Body",
+"Roman grey"
+],
+[
+"Groove",
+"8 × 9 mm"
+]
+]
+},
+{
+"title": "What you need",
+"pairs": [
+[
+"The profile",
+"QUIKLIT-0809-3K · 3000K\nQUIKLIT-0809-4K · 4000K\nRoman grey · PC cover included · 3 m lengths."
+],
+[
+"Accessory set",
+"QUIKLIT-0809-ACC\n1 wired end cap (1800 mm wire), 1 end cap, 2 clamps."
+],
+[
+"Power supply",
+"QUIKPOWER-24V-60W / 100W / 150W\nChoose by the total watts of the lights."
+]
+]
+},
+{
+"title": "Connectors · ordered separately",
+"pairs": [
+[
+"QUIKLIT-0809-CORNER CONNECTOR",
+"Joins two lengths at a corner."
+]
+]
+}
+],
+"notes": [
+"Optional: QUIKSENS sensors · splitter and extension wires · all accessories."
+],
+"drawings": []
+},
+{
+"slug": "quiklit-1010",
+"name": "QUIKLIT-1010",
+"chapter": "QuikLit",
+"family": "QuikLit",
+"kind": "ql",
+"group": "Solderless LED profiles",
+"page": 17,
+"ext": null,
+"tagline": "",
+"intro": "Recessed 10 × 10 mm profile with embedded COB LEDs and a prismatic cover for even, low-glare light.",
+"where": "Recessed in a groove: under shelves and inside cabinets.",
+"badges": [
+[
+"14 W/m",
+"Power"
+],
+[
+"3000K · 4000K",
+"Colour"
+],
+[
+"24V DC",
+"Voltage"
+],
+[
+"COB",
+"LED"
+],
+[
+"5 years",
+"Warranty"
+]
+],
+"hero": {
+"src": "/q/quiklit-1010.jpg",
+"w": 1248,
+"h": 927
+},
+"card": {
+"src": "/q/quiklit-1010_c.jpg",
+"w": 609,
+"h": 424
+},
+"tables": [
+{
+"title": "At a glance",
+"pairs": [
+[
+"Cover",
+"Prismatic, low glare"
+],
+[
+"Light",
+"Embedded COB LED"
+],
+[
+"Body",
+"Aluminium, roman grey"
+],
+[
+"Groove",
+"10 × 10 mm"
+]
+]
+},
+{
+"title": "What you need",
+"pairs": [
+[
+"The profile",
+"QUIKLIT-1010-3K · 3000K\nQUIKLIT-1010-4K · 4000K\nRoman grey aluminium · 3 m lengths."
+],
+[
+"Accessory set",
+"QUIKLIT-1010-ACC\n1 wired end cap (1800 mm wire), 1 end cap, 2 clamps."
+],
+[
+"Power supply",
+"QUIKPOWER-24V-60W / 100W / 150W\nChoose by the total watts of the lights."
+]
+]
+},
+{
+"title": "Connectors · ordered separately",
+"pairs": [
+[
+"QUIKLIT-1010-PRISMATIC CORNER CONNECTOR",
+"Transparent. Joins two lengths at a corner; fits 1010 and asymmetric 1010. Symbol shown."
+]
+]
+}
+],
+"notes": [
+"Optional: QUIKSENS sensors · splitter and extension wires · all accessories."
+],
+"drawings": []
+},
+{
+"slug": "quiklit-asymmetric-1010",
+"name": "QUIKLIT-ASYMMETRIC 1010",
+"chapter": "QuikLit",
+"family": "QuikLit",
+"kind": "ql",
+"group": "Solderless LED profiles",
+"page": 18,
+"ext": null,
+"tagline": "",
+"intro": "Asymmetric 10 × 10 mm profile that throws its light at 45°, for corners and showcases.",
+"where": "The light falls at 45° onto a back panel or into a showcase.",
+"badges": [
+[
+"14 W/m",
+"Power"
+],
+[
+"3000K · 4000K",
+"Colour"
+],
+[
+"24V DC",
+"Voltage"
+],
+[
+"45°",
+"Light"
+],
+[
+"5 years",
+"Warranty"
+]
+],
+"hero": {
+"src": "/q/quiklit-asymmetric-1010.jpg",
+"w": 1248,
+"h": 927
+},
+"card": {
+"src": "/q/quiklit-asymmetric-1010_c.jpg",
+"w": 609,
+"h": 424
+},
+"tables": [
+{
+"title": "At a glance",
+"pairs": [
+[
+"Cover",
+"Prismatic"
+],
+[
+"Light",
+"COB · asymmetric 45°"
+],
+[
+"Body",
+"Aluminium, roman grey"
+],
+[
+"Groove",
+"10 × 10 mm"
+]
+]
+},
+{
+"title": "What you need",
+"pairs": [
+[
+"The profile",
+"QUIKLIT-ASYMMETRIC-1010-3K · 3000K\nQUIKLIT-ASYMMETRIC-1010-4K · 4000K\nRoman grey aluminium · 3 m lengths."
+],
+[
+"Accessory set",
+"QUIKLIT-1010-ACC\n1 wired end cap (1800 mm wire), 1 end cap, 2 clamps. The same set as QUIKLIT-1010."
+],
+[
+"Power supply",
+"QUIKPOWER-24V-60W / 100W / 150W\nChoose by the total watts of the lights."
+]
+]
+},
+{
+"title": "Connectors · ordered separately",
+"pairs": [
+[
+"QUIKLIT-1010-PRISMATIC CORNER CONNECTOR",
+"Transparent. Joins two lengths at a corner; fits 1010 and asymmetric 1010. Symbol shown."
+]
+]
+}
+],
+"notes": [
+"Optional: QUIKSENS sensors · splitter and extension wires · all accessories."
+],
+"drawings": []
+},
+{
+"slug": "quiklit-1010-ecoflex",
+"name": "QUIKLIT-1010 ECOFLEX",
+"chapter": "QuikLit",
+"family": "QuikLit",
+"kind": "ql",
+"group": "Solderless LED profiles",
+"page": 20,
+"ext": null,
+"tagline": "",
+"intro": "Solderless 10 × 10 mm profile with symmetric and asymmetric optic options, 9 W/m. Need more light? ECOMAX, 14 W/m, opposite.",
+"where": "One profile, two optics: light straight down or angled.",
+"badges": [
+[
+"9 W/m",
+"Power"
+],
+[
+"3000K · 4000K",
+"Colour"
+],
+[
+"24V DC",
+"Voltage"
+],
+[
+"CRI 80+",
+"Colour rendering"
+],
+[
+"5 years",
+"Warranty"
+]
+],
+"hero": {
+"src": "/q/quiklit-1010-ecoflex.jpg",
+"w": 1248,
+"h": 927
+},
+"card": {
+"src": "/q/quiklit-1010-ecoflex_c.jpg",
+"w": 900,
+"h": 439
+},
+"tables": [
+{
+"title": "At a glance",
+"pairs": [
+[
+"Optics",
+"Two options"
+],
+[
+"Light",
+"Embedded SMD LED"
+],
+[
+"Body",
+"Aluminium, roman grey"
+],
+[
+"Groove",
+"10 × 10 mm"
+]
+]
+},
+{
+"title": "What you need",
+"pairs": [
+[
+"The profile",
+"QUIKLIT-1010 ECOFLEX-3K · 3000K\nQUIKLIT-1010 ECOFLEX-4K · 4000K\nRoman grey aluminium · 3 m lengths."
+],
+[
+"Accessory set",
+"QUIKLIT-1010 ECOFLEX-ACC\n1 wired end cap (1800 mm wire), 1 end cap, 2 clamps."
+],
+[
+"Power supply",
+"QUIKPOWER-24V-60W / 100W / 150W\nChoose by the total watts of the lights."
+]
+]
+},
+{
+"title": "Connectors · ordered separately",
+"pairs": [
+[
+"QUIKLIT-1010 ECOFLEX-CONNECTOR",
+"Straight connector. Joins two lengths in a straight line."
+],
+[
+"QUIKLIT-1010 ECOFLEX-CORNER CONNECTOR",
+"Corner connector. Joins two lengths at a corner."
+]
+]
+}
+],
+"notes": [
+"Optional: QUIKSENS sensors · splitter and extension wires · all accessories."
+],
+"drawings": []
+},
+{
+"slug": "quiklit-1010-ecomax",
+"name": "QUIKLIT-1010 ECOMAX",
+"chapter": "QuikLit",
+"family": "QuikLit",
+"kind": "ql",
+"group": "Solderless LED profiles",
+"page": 21,
+"ext": null,
+"tagline": "",
+"intro": "The ECOFLEX body with 14 W/m for more light, the same optic options and the same accessories. ECOFLEX, 9 W/m, opposite.",
+"where": "One profile, two optics: light straight down or angled.",
+"badges": [
+[
+"14 W/m",
+"Power"
+],
+[
+"3000K · 4000K",
+"Colour"
+],
+[
+"24V DC",
+"Voltage"
+],
+[
+"CRI 80+",
+"Colour rendering"
+],
+[
+"5 years",
+"Warranty"
+]
+],
+"hero": {
+"src": "/q/quiklit-1010-ecomax.jpg",
+"w": 1248,
+"h": 927
+},
+"card": {
+"src": "/q/quiklit-1010-ecomax_c.jpg",
+"w": 900,
+"h": 439
+},
+"tables": [
+{
+"title": "At a glance",
+"pairs": [
+[
+"Optics",
+"Two options"
+],
+[
+"Light",
+"Embedded SMD LED"
+],
+[
+"Body",
+"Aluminium, roman grey"
+],
+[
+"Groove",
+"10 × 10 mm"
+]
+]
+},
+{
+"title": "What you need",
+"pairs": [
+[
+"The profile",
+"QUIKLIT-1010 ECOMAX-3K · 3000K\nQUIKLIT-1010 ECOMAX-4K · 4000K\nRoman grey aluminium · 3 m lengths."
+],
+[
+"Accessory set",
+"QUIKLIT-1010 ECOFLEX-ACC\n1 wired end cap (1800 mm wire), 1 end cap, 2 clamps. The ECOFLEX set fits ECOMAX."
+],
+[
+"Power supply",
+"QUIKPOWER-24V-60W / 100W / 150W\nChoose by the total watts of the lights."
+]
+]
+},
+{
+"title": "Connectors · ordered separately",
+"pairs": [
+[
+"QUIKLIT-1010 ECOFLEX-CONNECTOR",
+"Straight connector. Joins two lengths in a straight line."
+],
+[
+"QUIKLIT-1010 ECOFLEX-CORNER CONNECTOR",
+"Corner connector. Joins two lengths at a corner."
+]
+]
+}
+],
+"notes": [
+"Optional: QUIKSENS sensors · splitter and extension wires · all accessories."
+],
+"drawings": []
+},
+{
+"slug": "quiklit-8mm-glass",
+"name": "QUIKLIT-8MM GLASS",
+"chapter": "QuikLit",
+"family": "QuikLit",
+"kind": "ql",
+"group": "Solderless LED profiles",
+"page": 22,
+"ext": null,
+"tagline": "",
+"intro": "Sleek aluminium profile that securely holds an 8 mm glass panel, with a built-in LED.",
+"where": "In the side panels, holding an 8 mm glass shelf.",
+"badges": [
+[
+"9 W/m",
+"Power"
+],
+[
+"3000K · 4000K",
+"Colour"
+],
+[
+"24V DC",
+"Voltage"
+],
+[
+"8 mm",
+"Glass"
+],
+[
+"5 years",
+"Warranty"
+]
+],
+"hero": {
+"src": "/q/quiklit-8mm-glass.jpg",
+"w": 1248,
+"h": 927
+},
+"card": {
+"src": "/q/quiklit-8mm-glass_c.jpg",
+"w": 609,
+"h": 424
+},
+"tables": [
+{
+"title": "At a glance",
+"pairs": [
+[
+"Holds",
+"8 mm glass"
+],
+[
+"Holder",
+"PC"
+],
+[
+"Body",
+"Aluminium, roman grey"
+],
+[
+"Groove",
+"8 × 10 mm"
+]
+]
+},
+{
+"title": "What you need",
+"pairs": [
+[
+"The profile",
+"QUIKLIT-8MM-GLASS-3K · 3000K\nQUIKLIT-8MM-GLASS-4K · 4000K\nRoman grey aluminium · 3 m lengths."
+],
+[
+"Accessory set",
+"QUIKLIT-8MM-GLASS-ACC\n1 wired end cap (1800 mm wire), 1 end cap."
+],
+[
+"Power supply",
+"QUIKPOWER-24V-60W / 100W / 150W\nChoose by the total watts of the lights."
+]
+]
+}
+],
+"notes": [
+"Optional: QUIKSENS sensors · splitter and extension wires · all accessories."
+],
+"drawings": []
+},
+{
+"slug": "quiklit-0618-dual-side",
+"name": "QUIKLIT-0618 DUAL SIDE",
+"chapter": "QuikLit",
+"family": "QuikLit",
+"kind": "ql",
+"group": "Solderless LED profiles",
+"page": 23,
+"ext": null,
+"tagline": "",
+"intro": "Sleek 6 × 18 mm shelf-edge profile that lights both sides: up and down.",
+"where": "On the front edge of a shelf, lighting above and below.",
+"badges": [
+[
+"9 W/m",
+"Power"
+],
+[
+"3000K · 4000K",
+"Colour"
+],
+[
+"24V DC",
+"Voltage"
+],
+[
+"CRI 90+",
+"Colour rendering"
+],
+[
+"5 years",
+"Warranty"
+]
+],
+"hero": {
+"src": "/q/quiklit-0618-dual-side.jpg",
+"w": 1248,
+"h": 927
+},
+"card": {
+"src": "/q/quiklit-0618-dual-side_c.jpg",
+"w": 609,
+"h": 424
+},
+"tables": [
+{
+"title": "At a glance",
+"pairs": [
+[
+"Light",
+"Up and down"
+],
+[
+"Size",
+"6 × 18 mm"
+],
+[
+"Body",
+"Aluminium, roman grey"
+],
+[
+"Groove",
+"6 × 18 mm"
+]
+]
+},
+{
+"title": "What you need",
+"pairs": [
+[
+"The profile",
+"QUIKLIT-0618-3K · 3000K\nQUIKLIT-0618-4K · 4000K\nRoman grey aluminium · 3 m lengths."
+],
+[
+"Accessory set",
+"QUIKLIT-0618-ACC\n1 wired end cap (1800 mm wire), 1 end cap."
+],
+[
+"Power supply",
+"QUIKPOWER-24V-60W / 100W / 150W\nChoose by the total watts of the lights."
+]
+]
+}
+],
+"notes": [
+"Optional: QUIKSENS sensors · splitter and extension wires · all accessories."
+],
+"drawings": []
+},
+{
+"slug": "quiklit-1313-corner",
+"name": "QUIKLIT-1313 CORNER",
+"chapter": "QuikLit",
+"family": "QuikLit",
+"kind": "ql",
+"group": "Solderless LED profiles",
+"page": 24,
+"ext": null,
+"tagline": "",
+"intro": "Robust, solder-free 13 × 13 mm corner profile for directional light in tight or angled spaces.",
+"where": "In an inside corner, aiming the light into the space.",
+"badges": [
+[
+"9 W/m",
+"Power"
+],
+[
+"3000K · 4000K",
+"Colour"
+],
+[
+"24V DC",
+"Voltage"
+],
+[
+"Directional",
+"Light"
+],
+[
+"5 years",
+"Warranty"
+]
+],
+"hero": {
+"src": "/q/quiklit-1313-corner.jpg",
+"w": 1248,
+"h": 927
+},
+"card": {
+"src": "/q/quiklit-1313-corner_c.jpg",
+"w": 609,
+"h": 424
+},
+"tables": [
+{
+"title": "At a glance",
+"pairs": [
+[
+"Light",
+"Directional"
+],
+[
+"Size",
+"13 × 13 mm"
+],
+[
+"Body",
+"Aluminium, roman grey"
+],
+[
+"Groove",
+"13 × 13 mm"
+]
+]
+},
+{
+"title": "What you need",
+"pairs": [
+[
+"The profile",
+"QUIKLIT-1313-3K · 3000K\nQUIKLIT-1313-4K · 4000K\nRoman grey aluminium · 3 m lengths."
+],
+[
+"Accessory set",
+"QUIKLIT-1313-ACC\n1 wired end cap (1800 mm wire), 1 end cap, 2 clamps."
+],
+[
+"Power supply",
+"QUIKPOWER-24V-60W / 100W / 150W\nChoose by the total watts of the lights."
+]
+]
+}
+],
+"notes": [
+"Optional: QUIKSENS sensors · splitter and extension wires · all accessories."
+],
+"drawings": []
+},
+{
+"slug": "quiklit-0408-neon-flex",
+"name": "QUIKLIT-0408 NEON FLEX",
+"chapter": "QuikLit",
+"family": "QuikLit",
+"kind": "ql",
+"group": "Solderless LED profiles",
+"page": 25,
+"ext": null,
+"tagline": "",
+"intro": "Thin 4 × 8 mm solderless neon flex for groove effects and sleek, modern designs.",
+"where": "In a groove, straight or along curves.",
+"badges": [
+[
+"14 W/m",
+"Power"
+],
+[
+"3000K · 4000K",
+"Colour"
+],
+[
+"24V DC",
+"Voltage"
+],
+[
+"CRI 90+",
+"Colour rendering"
+],
+[
+"5 years",
+"Warranty"
+]
+],
+"hero": {
+"src": "/q/quiklit-0408-neon-flex.jpg",
+"w": 1248,
+"h": 927
+},
+"card": {
+"src": "/q/quiklit-0408-neon-flex_c.jpg",
+"w": 609,
+"h": 424
+},
+"tables": [
+{
+"title": "At a glance",
+"pairs": [
+[
+"Type",
+"Flexible neon"
+],
+[
+"Light",
+"Embedded solder-free LED"
+],
+[
+"Body",
+"White"
+],
+[
+"Groove",
+"4 × 8 mm"
+]
+]
+},
+{
+"title": "What you need",
+"pairs": [
+[
+"The profile",
+"QUIKLIT-0408-3K · 3000K\nQUIKLIT-0408-4K · 4000K\nWhite flexible neon · 50 m roll."
+],
+[
+"Accessory set",
+"QUIKLIT-0408-ACC\n1 wired end cap (1800 mm wire), 1 end cap, 2 clamps."
+],
+[
+"Power supply",
+"QUIKPOWER-24V-60W / 100W / 150W\nChoose by the total watts of the lights."
+]
+]
+}
+],
+"notes": [
+"Optional: QUIKSENS sensors · splitter and extension wires · all accessories."
+],
+"drawings": []
+},
+{
+"slug": "quikmag-track",
+"name": "QUIKMAG-TRACK",
+"chapter": "QuikLit",
+"family": "QuikLit",
+"kind": "ql",
+"group": "QuikMag magnetic system",
+"page": 28,
+"ext": null,
+"tagline": "",
+"intro": "The recessed 3000 mm magnetic track, its wired end cap set, and joints for straight and corner runs.",
+"where": "Recessed under a shelf or top panel; the lights click on below.",
+"badges": [
+[
+"3000 mm",
+"Length"
+],
+[
+"10 × 11 mm",
+"Groove"
+],
+[
+"1800 mm wire",
+"Wired end cap"
+],
+[
+"Straight · corner",
+"Mounting"
+],
+[
+"Roman grey",
+"Finish"
+]
+],
+"hero": {
+"src": "/q/quikmag-track.jpg",
+"w": 1248,
+"h": 927
+},
+"card": {
+"src": "/q/quikmag-track_c.jpg",
+"w": 766,
+"h": 328
+},
+"tables": [
+{
+"title": "At a glance",
+"pairs": [
+[
+"Groove",
+"10 × 11 mm"
+]
+]
+},
+{
+"title": "What you need",
+"pairs": [
+[
+"The track",
+"QUIKMAG-TRACK\n3000 mm · roman grey."
+],
+[
+"Accessory set",
+"QUIKMAG-ACC\n1 wired end cap (1800 mm wire), 1 end cap, 2 clamps."
+],
+[
+"Power supply",
+"QUIKPOWER-24V-60W / 100W / 150W\nChoose by the total watts of the lights."
+]
+]
+},
+{
+"title": "Connectors · ordered separately",
+"pairs": [
+[
+"QUIKMAG-STRAIGHT JOINTER",
+"Roman grey. Joins two lengths in a straight line."
+],
+[
+"QUIKMAG-CORNER CONNECTOR",
+"Roman grey. Joins two lengths at a corner."
+]
+]
+}
+],
+"notes": [
+"Optional: QUIKSENS sensor. Warranty: lights and track 5 years; accessory sets and connectors are not covered."
+],
+"drawings": []
+},
+{
+"slug": "quikmag-flood",
+"name": "QUIKMAG-FLOOD",
+"chapter": "QuikLit",
+"family": "QuikLit",
+"kind": "ql",
+"group": "QuikMag magnetic system",
+"page": 29,
+"ext": null,
+"tagline": "",
+"intro": "Magnetic flood bar with a prismatic diffuser for even, diffused light, in three lengths.",
+"where": "Clicks onto the QUIKMAG track anywhere along it; slide it to move it.",
+"badges": [
+[
+"300 · 600 · 900 mm",
+"Length"
+],
+[
+"4 · 8 · 12W",
+"Power"
+],
+[
+"3000K · 4000K",
+"Colour"
+],
+[
+"CRI 90",
+"Colour rendering"
+],
+[
+"5 years",
+"Warranty"
+]
+],
+"hero": {
+"src": "/q/quikmag-flood.jpg",
+"w": 1248,
+"h": 927
+},
+"card": {
+"src": "/q/quikmag-flood_c.jpg",
+"w": 699,
+"h": 455
+},
+"tables": [
+{
+"title": "At a glance",
+"pairs": [
+[
+"Diffuser",
+"Prismatic"
+],
+[
+"Fixing",
+"Magnetic"
+],
+[
+"Body",
+"Roman grey"
+]
+]
+},
+{
+"title": "What you need",
+"pairs": [
+[
+"The light",
+"QUIKMAG-FLOOD-300MM-3K · 3000K\nQUIKMAG-FLOOD-300MM-4K · 4000K\nQUIKMAG-FLOOD-600MM-3K · 3000K\nQUIKMAG-FLOOD-600MM-4K · 4000K\nQUIKMAG-FLOOD-900MM-3K · 3000K\nQUIKMAG-FLOOD-900MM-4K · 4000K\nRoman grey."
+],
+[
+"The track",
+"QUIKMAG-TRACK\nQUIKMAG-ACC\n3000 mm track and its end cap set."
+],
+[
+"Power supply",
+"QUIKPOWER-24V-60W / 100W / 150W\nChoose by the total watts of the lights."
+]
+]
+}
+],
+"notes": [
+"Optional: QUIKSENS sensor. Warranty: lights and track 5 years; accessory sets and connectors are not covered."
+],
+"drawings": []
+},
+{
+"slug": "quikmag-grill",
+"name": "QUIKMAG-GRILL",
+"chapter": "QuikLit",
+"family": "QuikLit",
+"kind": "ql",
+"group": "QuikMag magnetic system",
+"page": 30,
+"ext": null,
+"tagline": "",
+"intro": "Magnetic COB grill light with a multi-dot laser-grill face, in two lengths.",
+"where": "Clicks onto the QUIKMAG track anywhere along it; slide it to move it.",
+"badges": [
+[
+"116 · 310 mm",
+"Length"
+],
+[
+"4 · 10 W",
+"Power"
+],
+[
+"3000K · 4000K",
+"Colour"
+],
+[
+"CRI 90",
+"Colour rendering"
+],
+[
+"5 years",
+"Warranty"
+]
+],
+"hero": {
+"src": "/q/quikmag-grill.jpg",
+"w": 1248,
+"h": 927
+},
+"card": {
+"src": "/q/quikmag-grill_c.jpg",
+"w": 687,
+"h": 455
+},
+"tables": [
+{
+"title": "At a glance",
+"pairs": [
+[
+"Face",
+"Laser grill"
+],
+[
+"Light",
+"COB LED"
+],
+[
+"Body",
+"Roman grey"
+]
+]
+},
+{
+"title": "What you need",
+"pairs": [
+[
+"The light",
+"QUIKMAG-GRILL MINI-3K · 3000K\nQUIKMAG-GRILL MINI-4K · 4000K\nQUIKMAG-GRILL MAXI-3K · 3000K\nQUIKMAG-GRILL MAXI-4K · 4000K\nMini 116 mm · maxi 310 mm."
+],
+[
+"The track",
+"QUIKMAG-TRACK\nQUIKMAG-ACC\n3000 mm track and its end cap set."
+],
+[
+"Power supply",
+"QUIKPOWER-24V-60W / 100W / 150W\nChoose by the total watts of the lights."
+]
+]
+}
+],
+"notes": [
+"Optional: QUIKSENS sensor. Warranty: lights and track 5 years; accessory sets and connectors are not covered."
+],
+"drawings": []
+},
+{
+"slug": "quikmag-spot",
+"name": "QUIKMAG-SPOT",
+"chapter": "QuikLit",
+"family": "QuikLit",
+"kind": "ql",
+"group": "QuikMag magnetic system",
+"page": 31,
+"ext": null,
+"tagline": "",
+"intro": "NANO magnetic spotlight that tilts and turns, and moves anywhere along the track.",
+"where": "Clicks onto the QUIKMAG track anywhere along it; slide it to move it.",
+"badges": [
+[
+"2 W",
+"Power"
+],
+[
+"3000K · 4000K",
+"Colour"
+],
+[
+"CRI 90",
+"Colour rendering"
+],
+[
+"90° · 340°",
+"Tilt · turn"
+],
+[
+"5 years",
+"Warranty"
+]
+],
+"hero": {
+"src": "/q/quikmag-spot.jpg",
+"w": 1248,
+"h": 927
+},
+"card": {
+"src": "/q/quikmag-spot_c.jpg",
+"w": 727,
+"h": 455
+},
+"tables": [
+{
+"title": "At a glance",
+"pairs": [
+[
+"Tilt",
+"90°"
+],
+[
+"Turn",
+"340°"
+],
+[
+"Body",
+"Roman grey"
+]
+]
+},
+{
+"title": "What you need",
+"pairs": [
+[
+"The light",
+"QUIKMAG-SPOT-3K · 3000K\nQUIKMAG-SPOT-4K · 4000K\nRoman grey."
+],
+[
+"The track",
+"QUIKMAG-TRACK\nQUIKMAG-ACC\n3000 mm track and its end cap set."
+],
+[
+"Power supply",
+"QUIKPOWER-24V-60W / 100W / 150W\nChoose by the total watts of the lights."
+]
+]
+}
+],
+"notes": [
+"Optional: QUIKSENS sensor. Warranty: lights and track 5 years; accessory sets and connectors are not covered."
+],
+"drawings": []
+},
+{
+"slug": "quikspot-01w",
+"name": "QUIKSPOT-01W",
+"chapter": "QuikLit",
+"family": "QuikLit",
+"kind": "ql",
+"group": "QuikSpot",
+"page": 32,
+"ext": null,
+"tagline": "",
+"intro": "Compact 1W recessed spotlight with a replaceable head, for a focused, narrow beam. 24V from a QUIKPOWER supply.",
+"where": "Recessed in a shelf or top panel, for one object.",
+"badges": [
+[
+"1 W",
+"Power"
+],
+[
+"3000K · 4000K",
+"Colour"
+],
+[
+"24V DC",
+"Voltage"
+],
+[
+"Narrow",
+"Beam"
+],
+[
+"Replaceable",
+"Head"
+],
+[
+"5 years",
+"Warranty"
+]
+],
+"hero": {
+"src": "/q/quikspot-01w.jpg",
+"w": 1248,
+"h": 927
+},
+"card": {
+"src": "/q/quikspot-01w_c.jpg",
+"w": 661,
+"h": 455
+},
+"tables": [
+{
+"title": "At a glance",
+"pairs": [
+[
+"Beam",
+"Narrow"
+],
+[
+"Head",
+"Replaceable"
+],
+[
+"Body",
+"Roman grey"
+]
+]
+},
+{
+"title": "What you need",
+"pairs": [
+[
+"The spot",
+"QUIKSPOT-01W-3K · 3000K\nQUIKSPOT-01W-4K · 4000K\nRoman grey · recessed."
+],
+[
+"Power supply",
+"QUIKPOWER-24V-60W / 100W / 150W\nOne light per light port."
+]
+]
+}
+],
+"notes": [
+"Optional: QUIKSENS sensors · splitter and extension wires."
+],
+"drawings": []
+},
+{
+"slug": "quikspot-ecodot",
+"name": "QUIKSPOT-ECODOT",
+"chapter": "QuikLit",
+"family": "QuikLit",
+"kind": "ql",
+"group": "QuikSpot",
+"page": 33,
+"ext": null,
+"tagline": "",
+"intro": "Compact 1W recessed dot light with a connecting cable, for subtle accent lighting. 24V from a QUIKPOWER supply.",
+"where": "Recessed in a shelf or top panel; the cable runs behind.",
+"badges": [
+[
+"1 W",
+"Power"
+],
+[
+"3000K · 4000K",
+"Colour"
+],
+[
+"24V DC",
+"Voltage"
+],
+[
+"Recessed",
+"Mounting"
+],
+[
+"Roman grey",
+"Finish"
+],
+[
+"5 years",
+"Warranty"
+]
+],
+"hero": {
+"src": "/q/quikspot-ecodot.jpg",
+"w": 1248,
+"h": 927
+},
+"card": {
+"src": "/q/quikspot-ecodot_c.jpg",
+"w": 676,
+"h": 445
+},
+"tables": [
+{
+"title": "At a glance",
+"pairs": [
+[
+"Mounting",
+"Recessed"
+],
+[
+"Cable",
+"Connecting cable"
+],
+[
+"Body",
+"Roman grey"
+]
+]
+},
+{
+"title": "What you need",
+"pairs": [
+[
+"The dot",
+"QUIKSPOT-ECODOT-01W-3K · 3000K\nQUIKSPOT-ECODOT-01W-4K · 4000K\nRoman grey · with connecting cable."
+],
+[
+"Power supply",
+"QUIKPOWER-24V-60W / 100W / 150W\nOne light per light port."
+]
+]
+}
+],
+"notes": [
+"Optional: QUIKSENS sensors · splitter and extension wires."
+],
+"drawings": []
+}
+]

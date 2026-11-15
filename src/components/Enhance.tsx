@@ -123,6 +123,12 @@ function titanConfigurator(root: HTMLElement) {
     const code = `TTN-${w}-IP20-REC-${cct}-${body}-${ctl}-${refl}${beam}${cri?.checked ? "-97" : ""}`;
     if (codeEl) codeEl.textContent = code;
     if (descEl) descEl.textContent = `${w} W · IP20 · recessed · ${cur("CCT")} · ${cur("Trim").replace("Matt ", "").toLowerCase()} trim · ${cur("Control")} · ${cur("Reflector").replace("Matt ", "").toLowerCase()} reflector, ${cur("Beam").replace(" · standard", "")} · CRI ${cri?.checked ? "97+" : "90+"}`;
+    const box = document.getElementById("beam3m");
+    if (box) {
+      const deg = parseInt(cur("Beam"), 10) || 36; const dia = 2 * 3 * Math.tan((deg * Math.PI) / 360);
+      const half = Math.min(46, (dia / 2) * 13);   // 13 px per metre at this drawing scale
+      box.innerHTML = `<svg viewBox="0 0 100 60" preserveAspectRatio="xMidYMid meet" style="position:absolute;inset:0;width:100%;height:100%"><defs><linearGradient id="bg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd9a0" stop-opacity=".85"/><stop offset="1" stop-color="#ffd9a0" stop-opacity=".12"/></linearGradient></defs><line x1="4" y1="8" x2="96" y2="8" stroke="#6B6660" stroke-width=".4"/><line x1="4" y1="47" x2="96" y2="47" stroke="#6B6660" stroke-width=".4"/><polygon points="50,8 ${50 - half},47 ${50 + half},47" fill="url(#bg3)" style="transition:all .5s"/><rect x="48.6" y="6.6" width="2.8" height="1.6" fill="#F6F4F0"/><line x1="${50 - half}" y1="51" x2="${50 + half}" y2="51" stroke="#F6F4F0" stroke-width=".3"/><text x="50" y="57" text-anchor="middle" font-size="3.4" fill="#F6F4F0" letter-spacing=".3">Ø ${dia.toFixed(2)} M AT 3 M · ${deg}° BEAM</text><text x="5" y="5.2" font-size="2.6" fill="#A39D94" letter-spacing=".3">CEILING</text><text x="5" y="45.4" font-size="2.6" fill="#A39D94" letter-spacing=".3">FLOOR · 3 M BELOW · NOMINAL GEOMETRY</text></svg>`;
+    }
     if (sendLink) sendLink.href = `/contact/?about=arch&msg=${encodeURIComponent("TITAN — " + code)}`;
   }
   groups.forEach((grp) => grp.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => {
@@ -197,7 +203,7 @@ export default function Enhance({ page }: { page: string }) {
         const ta = f.querySelector("textarea"); if (ta && msg) ta.value = msg;
         wireForm(f, null, () => "", () => { const v = (sel?.value || "").toLowerCase(); return [v.includes("quiklit") ? "ql" : v.includes("decorative") ? "deco" : "arch"]; });
       } else if (label === "Dealer enquiry") {
-        wireForm(f, null, () => "", (_f, c) => { const on = (c["Interested in"] || []).map((x) => x.toLowerCase()); const w: World[] = []; if (on.some((x) => x.startsWith("arch"))) w.push("arch"); if (on.some((x) => x.startsWith("quik"))) w.push("ql"); if (on.some((x) => x.startsWith("deco"))) w.push("deco"); return w.length ? w : ["arch"]; });
+        wireForm(f, null, () => "", (_f, c) => { const on = (c["Interested in"] || []).map((x) => x.toLowerCase()); const w: World[] = []; if (on.some((x) => x.startsWith("arch") || x.startsWith("tech"))) w.push("arch"); if (on.some((x) => x.startsWith("quik"))) w.push("ql"); if (on.some((x) => x.startsWith("deco"))) w.push("deco"); return w.length ? w : ["arch"]; });
       } else if (label === "Request files") {
         const chosen = () => [...root.querySelectorAll('button[aria-pressed="true"]')].filter((b) => txt(b) === "Added ✓" || (page === "Downloads" && !dlButtons.includes(b as HTMLElement)));
         wireForm(f, null,

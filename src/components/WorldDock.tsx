@@ -2,9 +2,9 @@ import Link from "next/link";
 
 // The three offerings, pinned to the bottom of every page.
 const items = [
-  { href: "/architectural/", small: "Light for architecture", label: "Architectural", line: "var(--arch)" },
-  { href: "/quiklit/", small: "Light for furniture", label: "QuikLit", line: "var(--ql)" },
-  { href: "/decorative/", small: "Light for living", label: "Decorative", line: "var(--deco)" },
+  { href: "/architectural/", small: "For architecture", label: "Architectural", line: "var(--arch)" },
+  { href: "/quiklit/", small: "For furniture", label: "QuikLit", line: "var(--ql)" },
+  { href: "/decorative/", small: "For living", label: "Decorative", line: "var(--deco)" },
 ];
 
 export default function WorldDock() {

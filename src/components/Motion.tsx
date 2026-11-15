@@ -10,12 +10,14 @@ export default function Motion() {
     const els = [...document.querySelectorAll<HTMLElement>("[data-reveal], .dc section, .dc article")];
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => { if (e.isIntersecting) { (e.target as HTMLElement).classList.add("in"); io.unobserve(e.target); } });
-    }, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
+    }, { threshold: 0, rootMargin: "0px 0px -8% 0px" });
     els.forEach((el) => {
       if (el.getBoundingClientRect().top < window.innerHeight * 0.9) return; // already on screen: leave as is
+      if (el.getBoundingClientRect().height > window.innerHeight * 1.5) return; // very tall blocks: no fade
       el.classList.add("reveal"); io.observe(el);
     });
-    return () => io.disconnect();
+    const safety = window.setTimeout(() => els.forEach((el) => el.classList.add("in")), 6000);
+    return () => { io.disconnect(); window.clearTimeout(safety); };
   }, [path]);
   return null;
 }
