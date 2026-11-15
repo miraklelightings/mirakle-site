@@ -1,7 +1,8 @@
-MIRAKLE WEBSITE - UPDATE 7
-The changes from the ten-question interview. One drag only.
+MIRAKLE WEBSITE - UPDATE 9
+Archivo typeface, "Architectural" naming, no vertical colours, and the recorded demo voice.
 
 1. In Chrome open:  https://github.com/miraklelightings/mirakle-site/upload/main
-2. Drag the "src" folder from this folder onto the page.
-3. Wait for the file list to finish, then press the green "Commit changes" button.
-4. Wait two minutes and open https://mirakle-site-66p3.vercel.app
+2. Inside this folder, select the four items together: the "src" folder, the "public" folder,
+   package.json and package-lock.json. Do NOT select this read-me.
+3. Drag the four onto the page together, wait for the list to finish, then press "Commit changes".
+4. Wait three minutes and open https://mirakle-site-66p3.vercel.app/quiklit/boq/
