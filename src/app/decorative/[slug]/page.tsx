@@ -94,7 +94,7 @@ function Piece({ d }: { d: DItem }) {
       <section className="pp-ask">
         <div className="wrap pp-ask-in">
           <div style={{ display: "flex", flexDirection: "column", gap: 10, maxWidth: 640 }}>
-            <span className="cap" style={{ color: "var(--on-dark-grey)" }}>{m.role} · {m.name}</span>
+            <span className="cap" style={{ color: "var(--on-dark-grey)" }}>{m.name}</span>
             <span className="h28">Price and delivery for {d.codes[0]}, on enquiry.</span>
             <span className="t14" style={{ color: "var(--on-dark-grey)" }}>Photographs are for reference. Finish, size and light source are as listed for each code.</span>
           </div>

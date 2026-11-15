@@ -80,7 +80,7 @@ function wireForm(form: HTMLFormElement, pageWorld: World | null, extraItems: ()
         });
       }
       const who = [...new Set(worlds)].map((w) => MANAGERS[w].name).join(", ");
-      form.innerHTML = `<div style="padding:24px;background:#EDE9E3;display:flex;flex-direction:column;gap:8px"><span style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#6B6660">Received</span><span style="font-size:20px">Thank you, ${name.replace(/</g, "")}.</span><span style="font-size:14px;color:#6B6660">${who} will get back to you within 24 hours.</span></div>`;
+      form.innerHTML = `<div style="padding:24px;background:#EDE9E3;display:flex;flex-direction:column;gap:8px"><span style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#6B6660">Received</span><span style="font-size:20px">Thank you, ${name.replace(/</g, "")}.</span><span style="font-size:14px;color:#6B6660">The ${who} will get back to you within 24 hours.</span></div>`;
     } catch {
       btn.disabled = false; btn.textContent = "Try again";
       note.textContent = "Could not send. Please try again, or WhatsApp us.";

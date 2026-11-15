@@ -71,11 +71,11 @@ export function SelectionForm() {
         <label className="field">When<select value={f.when} onChange={(e) => setF({ ...f, when: e.target.value })}><option value="Within a month">WITHIN A MONTH</option><option value="1–3 months">1–3 MONTHS</option><option value="Later">LATER</option></select></label>
         <div className="dform-btns">
           <button type="button" className="btn" disabled={state === "sending" || state === "ok"} onClick={send}>{state === "ok" ? "Sent ✓" : state === "sending" ? "Sending…" : "Send to the Decorative team"}</button>
-          <a className="btn ghost" href={`https://wa.me/${m.wa}?text=${encodeURIComponent(text)}`} target="_blank" rel="noopener">WhatsApp {m.name.split(" ")[0]}</a>
+          <a className="btn ghost" href={`https://wa.me/${m.wa}?text=${encodeURIComponent(text)}`} target="_blank" rel="noopener">WhatsApp {m.name}</a>
         </div>
         {state === "need" && <p className="t14 dform-err">Please add your name and a 10-digit mobile number.</p>}
         {state === "err" && <p className="t14 dform-err">That did not go through. Please use WhatsApp.</p>}
-        {state === "ok" && <p className="t16">Thank you. {m.name} will reply within one working day on {m.phone}.</p>}
+        {state === "ok" && <p className="t16">Thank you. The {m.name} will reply within one working day on {m.phone}.</p>}
         <p className="t14 grey">{m.name} · {m.phone} · {m.email}</p>
       </div>
     </div>

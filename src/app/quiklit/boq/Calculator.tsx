@@ -276,13 +276,13 @@ export default function Calculator() {
               </div>
               <div className="calc-send-btns">
                 <button type="button" className="btn" disabled={sent === "sending" || sent === "ok" || demoOn} onClick={sendIt}>{sent === "ok" ? "Sent ✓" : sent === "sending" ? "Sending…" : "Send for a quote"}</button>
-                <a className="btn ghost" href={`https://wa.me/${m.wa}?text=${encodeURIComponent(text)}`} target="_blank" rel="noopener">WhatsApp {m.name.split(" ")[0]}</a>
+                <a className="btn ghost" href={`https://wa.me/${m.wa}?text=${encodeURIComponent(text)}`} target="_blank" rel="noopener">WhatsApp {m.name}</a>
                 <a className="btn ghost" href={`mailto:${m.email}?subject=${encodeURIComponent("QuikLit BOQ request")}&body=${encodeURIComponent(text)}`}>Email it</a>
                 <button type="button" className="btn ghost" onClick={() => window.print()}>Save as PDF</button>
               </div>
               {sent === "need" && <p className="t14 calc-err">Please add your name and a 10-digit mobile number.</p>}
               {sent === "err" && <p className="t14 calc-err">That did not go through. Please use WhatsApp or email.</p>}
-              {sent === "ok" && <p className="t16">Thank you. {m.name} will reply within one working day on {m.phone}.</p>}
+              {sent === "ok" && <p className="t16">Thank you. The {m.name} will reply within one working day on {m.phone}.</p>}
             </div>
           </>
         )}
