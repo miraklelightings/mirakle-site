@@ -1,0 +1,19 @@
+MIRAKLE WEBSITE - UPDATE 6
+Decorative collection (214 lights, each with its own page) + the new QuikLit calculator.
+
+Use Chrome. You will do the same thing nine times.
+
+1. Open this page (keep it as a bookmark):
+   https://github.com/miraklelightings/mirakle-site/upload/main
+
+2. Open folder "1 - drag the public folder". Inside is one folder called "public".
+   Drag that "public" folder onto the Chrome page.
+   Wait until the file list stops growing, then press the green "Commit changes" button.
+
+3. Open the same page again and repeat with folder 2, then 3, and so on up to 9.
+   Folders 1 to 8 each hold a "public" folder. Folder 9 holds a "src" folder. Do 9 last.
+
+4. After folder 9, wait two minutes and open https://mirakle-site-66p3.vercel.app
+
+Each folder has fewer than 100 files because GitHub refuses more than 100 in one drag.
+If one drag fails, just do that same folder again. Doing a folder twice does no harm.
