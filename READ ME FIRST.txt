@@ -1,8 +1,14 @@
-MIRAKLE WEBSITE - UPDATE 9
-Archivo typeface, "Architectural" naming, no vertical colours, and the recorded demo voice.
+MIRAKLE WEBSITE - UPDATE 12 (19 NOV 2026)
 
-1. In Chrome open:  https://github.com/miraklelightings/mirakle-site/upload/main
-2. Inside this folder, select the four items together: the "src" folder, the "public" folder,
-   package.json and package-lock.json. Do NOT select this read-me.
-3. Drag the four onto the page together, wait for the list to finish, then press "Commit changes".
-4. Wait three minutes and open https://mirakle-site-66p3.vercel.app/quiklit/boq/
+Upload the three folders in this order. Each one is under 100 files.
+
+Open: https://github.com/miraklelightings/mirakle-site/upload/main
+
+1. Open the folder "1 OF 3 - PICTURES". Drag the "public" folder inside it onto the page.
+   Wait until every file is listed, then press "Commit changes".
+2. Do the same with "2 OF 3 - PICTURES".
+3. Open "3 OF 3 - SITE". Select both "public" and "src" together, drag them onto the page,
+   wait, then press "Commit changes".
+
+The site rebuilds itself in about two minutes after step 3.
+Nothing is deleted. The files replace older ones with the same name.
