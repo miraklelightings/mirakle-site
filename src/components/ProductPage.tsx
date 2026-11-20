@@ -2,7 +2,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/RangeIndex";
-import { MANAGERS, wa, type World } from "@/lib/site";
+import { MANAGERS, wa, type World, WORLD_NAV } from "@/lib/site";
 import { hrefOf, title, type Product, type Table } from "@/lib/products";
 import { U } from "@/lib/units";
 
@@ -43,9 +43,7 @@ export default function ProductPage({ p: raw, siblings, world }: { p: Product; s
   const m = MANAGERS[world];
   const name = title(p);
   const back = world === "ql" ? { href: "/quiklit/", label: "QuikLit" } : { href: "/architectural/", label: "Architectural" };
-  const nav = world === "ql"
-    ? [{ label: "Profiles", href: "/quiklit/#profiles" }, { label: "BOQ calculator", href: "/quiklit/boq/" }, { label: "Downloads", href: "/downloads/" }]
-    : [{ label: "Magnetic track", href: "/architectural/#magnetic" }, { label: "Spotlights", href: "/architectural/#spotlights" }, { label: "Linear", href: "/architectural/#linear" }, { label: "LED drivers", href: "/architectural/#drivers" }];
+  const nav = WORLD_NAV[world];
   const enquire = `/contact/?about=${world}&msg=${encodeURIComponent("Datasheet and price for " + name)}`;
   const i = siblings.findIndex((s) => s.slug === p.slug);
   const prev = i > 0 ? siblings[i - 1] : null, next = i >= 0 && i < siblings.length - 1 ? siblings[i + 1] : null;

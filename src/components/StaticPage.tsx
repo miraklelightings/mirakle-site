@@ -1,10 +1,23 @@
 import Footer from "./Footer";
+import Header from "./Header";
+import { WORLD_NAV, type World } from "@/lib/site";
 import Enhance from "./Enhance";
 import { unitsInHtml } from "@/lib/units";
 
 // A designed page. `children` (optional) are placed at `slot`: "finder" swaps out the old COB finder,
 // "end" sits just before the page footer.
 export default function StaticPage({ css, body, footer, page, slot, children }: { css: string; body: string; footer?: boolean; page: string; slot?: "finder" | "end"; children?: React.ReactNode }) {
+  // Each designed page once carried its own header. The shared one replaces it, so the mark, its size
+  // and the navigation are the same on every page.
+  const world: World | undefined = /^(Architectural|Titan|Drivers|Linear|Elva5)$/.test(page) ? "arch" : /^Quiklit/.test(page) ? "ql" : undefined;
+  const h0 = body.indexOf("<header"), h1 = body.indexOf("</header>");
+  if (h0 >= 0 && h1 > h0 && h0 < 2000) {
+    // the strip of three verticals that sat above that header goes with it
+    const w = body.indexOf('aria-label="MIRAKLE worlds"');
+    const bar = w > 0 && w < h0 ? body.lastIndexOf("<div", body.lastIndexOf("<div", w) - 1) : -1;
+    body = body.slice(0, bar >= 0 ? bar : h0) + body.slice(h1 + 9);
+  }
+  const cta = world === "ql" ? { label: "BOQ calculator", href: "/quiklit/boq/" } : world === "arch" ? { label: "Enquire", href: "/contact/?about=arch" } : { label: "Enquire", href: "/contact/" };
   body = unitsInHtml(body);
   let before = body, after = "";
   if (children) {
@@ -25,6 +38,7 @@ export default function StaticPage({ css, body, footer, page, slot, children }: 
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
+      <Header world={world} nav={world ? WORLD_NAV[world] : []} cta={cta} />
       <div className="dc">
         <div dangerouslySetInnerHTML={{ __html: before }} />
         {children}

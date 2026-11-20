@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import { FAMILIES } from "@/lib/deco";
 import { SelectionBar } from "./Select";
 
-export const DECO_NAV = FAMILIES.map((f) => ({ label: f.name.split(" ")[0], href: `/decorative/${f.id}/` }));
+export const DECO_NAV = FAMILIES.map((f) => ({ label: f.short, href: `/decorative/${f.id}/` }));
 
 export default function DecoShell({ children }: { children: React.ReactNode }) {
   return (

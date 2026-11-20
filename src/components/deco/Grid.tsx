@@ -6,19 +6,20 @@ import type { CardData } from "@/lib/deco";
 import { U } from "@/lib/units";
 
 export function DecoCard({ c }: { c: CardData }) {
+  const href = `/decorative/${c.slug}/`;
   return (
     <div className="dcard">
-      <Link href={`/decorative/${c.slug}/`} className="dcard-img"><img src={c.img.src} alt={c.codes.join(", ")} width={c.img.w} height={c.img.h} loading="lazy" /></Link>
+      <Link href={href} className="dcard-img"><img src={c.img.src} alt={`${c.name}, ${c.kind.toLowerCase()}`} width={c.img.w} height={c.img.h} loading="lazy" /></Link>
       <div className="dcard-meta">
-        <Link href={`/decorative/${c.slug}/`} className="dcard-name">{c.codes[0]}{c.codes.length > 1 && <span className="grey"> +{c.codes.length - 1}</span>}</Link>
-        <SelectButton code={c.codes[0]} small />
+        <Link href={href} className="dcard-name">{c.name}</Link>
+        {c.codes.length === 1 ? <SelectButton code={c.codes[0]} small /> : <Link href={href} className="dsel small">{c.codes.length} options</Link>}
       </div>
-      <span className="dcard-line"><U>{c.finish}</U></span>
+      <span className="dcard-line">{c.codes.length === 1 ? c.codes[0] : c.kind}{c.finish && " · "}<U>{c.finish}</U></span>
     </div>
   );
 }
 
-// A family or a material, with material filters when there is more than one to choose from.
+// A chapter or a material, with material filters when there is more than one to choose from.
 export default function DecoGrid({ cards, filter = true }: { cards: CardData[]; filter?: boolean }) {
   const tags = [...new Set(cards.flatMap((c) => c.tags))].filter((t) => cards.filter((c) => c.tags.includes(t)).length >= 2);
   const [tag, setTag] = useState("");

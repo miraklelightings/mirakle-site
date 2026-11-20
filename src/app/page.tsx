@@ -1,9 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Hero from "@/components/home/Hero";
 import Tech from "@/components/home/Tech";
 import RoomLab from "@/components/home/RoomLab";
+import { DECO, codes, designs } from "@/lib/deco";
 import { CLIENTS, INSTAGRAM, MANAGERS, wa } from "@/lib/site";
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 const WITH = ["Architects", "Interior designers", "Lighting consultants", "Developers", "Builders", "Hospitality projects", "Luxury residences", "Commercial projects", "Modular furniture makers"];
 const STEPS = [
@@ -12,124 +17,142 @@ const STEPS = [
   { n: "03", t: "Connect", d: "To the cabinet power supply, with Phoenix terminals." },
   { n: "04", t: "Light", d: "Plug in. It lights. No soldering anywhere." },
 ];
-const PIECES = ["HPHL1166", "HPHL1249", "HPHL1280", "HPHL1252"];
+// The four chapters of the Architectural Lighting Catalogue 2027–28.
+const RANGE = [
+  { no: "01", name: "Magnetic lighting", line: "ELVA 5. A 48 V magnetic track system with a 5 mm opening.", href: "/architectural/elva-5/", img: "/img/elva_room.jpg" },
+  { no: "02", name: "Spotlights", line: "Nineteen COB series, recessed, surface and track.", href: "/architectural/#spotlights", img: "/img/viz_titan.jpg" },
+  { no: "03", name: "Linear", line: "OPTIPRO strips, CURVA, ARCUS and SKYLIT.", href: "/architectural/linear/", img: "/img/facade.jpg" },
+  { no: "04", name: "LED drivers", line: "Nineteen drivers in six families.", href: "/architectural/drivers/", img: "/p/vega.jpg", product: true },
+];
+// Four ideas from the catalogue's pages on light.
+const ONLIGHT = [
+  { cap: "Light and the body", h: "We are built for daylight.", d: "Cool and bright at noon, warm and low at the edges of the day. A room that follows that curve, quietly, feels right without anyone knowing why." },
+  { cap: "Colour of light", h: "Kelvin is a mood.", d: "It is the first decision on any scheme, and the one most often left to chance." },
+  { cap: "Colour rendering", h: "CRI is honesty.", d: "How faithfully a light shows colour. CRI 90+ across the catalogue." },
+  { cap: "Beam", h: "The angle is the drawing.", d: "Choose the angle for the object, not the room." },
+];
+const PIECES = [
+  { slug: "glacier", name: "GLACIER", img: "/img/deco/glacier.jpg" },
+  { slug: "cosmos", name: "COSMOS", img: "/img/deco/cosmos.jpg" },
+  { slug: "plume", name: "PLUME", img: "/img/deco/plume.jpg" },
+  { slug: "steppe", name: "STEPPE", img: "/img/deco/steppe.jpg" },
+];
 
 export default function Home() {
   return (
     <>
-      <Header nav={[{ label: "About", href: "/about/" }, { label: "Downloads", href: "/downloads/" }, { label: "Contact", href: "/contact/" }]} cta={{ label: "Enquire", href: "/contact/" }} />
+      <Header over cta={{ label: "Enquire", href: "/contact/" }} />
       <main>
-        {/* Landing: the three verticals */}
-        <section className="landing" aria-label="MIRAKLE: three verticals">
-          <div className="wrap landing-head">
-            <h1 className="h40" style={{ maxWidth: 760 }}>India&apos;s most trusted name in light.</h1>
-            <span className="cap" style={{ color: "var(--on-dark-grey)" }}>Three verticals · one maker · Ahmedabad</span>
+        <Hero />
+
+        {/* What we believe */}
+        <section className="wrap hstate">
+          <span className="cap grey" data-reveal>MIRAKLE · Ahmedabad</span>
+          <h2 className="h88" data-reveal>Light is the first material.</h2>
+          <div className="hstate-cols" data-reveal>
+            <p className="t20" style={{ margin: 0 }}>Before stone, before timber, before glass, a space is made of light. Everything else is what the light lands on.</p>
+            <p className="t16 grey" style={{ margin: 0 }}>One maker, three verticals: architectural lighting for the people who draw buildings, QuikLit for the people who build furniture, and decorative lighting for the rooms people live in.</p>
           </div>
-          <div className="worlds" id="worlds">
-            <div className="world">
-              <img src="/img/home_lobby.jpg" alt="A hotel lobby wall grazed by linear light, track spotlights on the desk" />
-              <Link href="/architectural/" aria-label="Architectural" style={{ position: "absolute", inset: 0, zIndex: 1 }} />
-              <div className="world-copy" style={{ zIndex: 2, pointerEvents: "none" }}>
-                <span className="world-line" style={{ background: "var(--arch)" }} />
-                <span className="cap" style={{ color: "var(--on-dark-grey)" }}>01</span>
-                <span className="h40">Architectural</span>
-                <span className="world-desc">Magnetic track, COB spotlights, linear light and LED drivers for professional projects, architects and interior designers.</span>
-                <span className="world-tag">1000+ SKUs · Locally assembled</span>
-                <span className="world-cta" style={{ pointerEvents: "auto" }}><Link href="/architectural/" className="btn light">Explore</Link></span>
-              </div>
-            </div>
-            <div className="world big">
-              <img src="/img/home_kitchen.jpg" alt="A modular kitchen and shelves lit by slim profile lights" />
-              <Link href="/quiklit/" aria-label="QuikLit" style={{ position: "absolute", inset: 0, zIndex: 1 }} />
-              <div className="world-copy" style={{ zIndex: 2, pointerEvents: "none" }}>
-                <span className="world-line" style={{ background: "var(--ql)" }} />
-                <span className="cap" style={{ color: "var(--on-dark-grey)" }}>02</span>
-                <span className="h40">QuikLit</span>
-                <span className="world-desc">Solderless cabinet and magnetic lighting for modular kitchens, wardrobes and furniture manufacturers.</span>
-                <span className="world-tag">Cut · Cap · Connect · Light</span>
-                <span className="world-cta" style={{ pointerEvents: "auto" }}><Link href="/quiklit/" className="btn light">Explore</Link><Link href="/quiklit/boq/" className="btn ghost-light">BOQ calculator</Link></span>
-              </div>
-            </div>
-            <div className="world">
-              <img src="/img/deco_kitchen.jpg" alt="Brass pendants over a kitchen island" />
-              <Link href="/decorative/" aria-label="Decorative Lighting" style={{ position: "absolute", inset: 0, zIndex: 1 }} />
-              <div className="world-copy" style={{ zIndex: 2, pointerEvents: "none" }}>
-                <span className="world-line" style={{ background: "var(--deco)" }} />
-                <span className="cap" style={{ color: "var(--on-dark-grey)" }}>03</span>
-                <span className="h40">Decorative Lighting</span>
-                <span className="world-desc">Curated designer lights for premium residential, hospitality and commercial spaces.</span>
-                <span className="world-tag">214+ curated designer lights</span>
-                <span className="world-cta" style={{ pointerEvents: "auto" }}><Link href="/decorative/" className="btn light">Explore</Link></span>
-              </div>
+        </section>
+
+        {/* 01 Architectural */}
+        <Tech />
+        <section className="hrange">
+          <div className="hrange-grid">
+            {RANGE.map((r) => (
+              <Link key={r.no} href={r.href} className="hrange-item" data-reveal>
+                <span className={"hrange-img" + ("product" in r ? " product" : "")}><img src={r.img} alt={r.name} loading="lazy" /></span>
+                <span className="cap dim">{r.no}</span>
+                <span className="h28">{r.name}</span>
+                <span className="t14 dim">{r.line}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+        <RoomLab />
+
+        {/* On light */}
+        <section className="honl">
+          <div className="wrap honl-in">
+            <div className="honl-head" data-reveal><span className="cap grey">On light</span><h2 className="h56">Four things we design by.</h2></div>
+            <div className="honl-grid">
+              {ONLIGHT.map((x, i) => (
+                <div key={x.h} className="honl-item" data-reveal>
+                  <span className="cap grey">0{i + 1} · {x.cap}</span>
+                  <span className="h28">{x.h}</span>
+                  <span className="t14 grey">{x.d}</span>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* 01 Technical */}
-        <Tech />
-        <RoomLab />
-
         {/* 02 QuikLit */}
-        <section className="ql chapter" id="quiklit">
-          <div className="wrap ql-top">
-            <div data-reveal style={{ display: "flex", flexDirection: "column", gap: 22 }}>
-              <span className="ql-line" />
-              <span className="chapter-num grey">02 · QuikLit</span>
-              <h2 className="h56">Cut. Cap. Connect. Light.</h2>
-              <p className="t20 grey" style={{ margin: 0 }}>Solderless cabinet lighting and magnetic lighting for modular kitchens, wardrobes and furniture manufacturers.</p>
-              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                <Link href="/quiklit/boq/" className="btn">Open the BOQ calculator</Link>
-                <Link href="/quiklit/" className="btn ghost">Explore QuikLit</Link>
+        <section className="hql" id="quiklit">
+          <figure className="hql-img"><img src="/img/wardrobe.jpg" alt="A wardrobe lit by QuikLit profiles" loading="lazy" /></figure>
+          <div className="wrap hql-top">
+            <div className="hql-copy" data-reveal>
+              <span className="cap grey">02 · QuikLit</span>
+              <h2 className="h88">Cut. Cap.<br />Connect. Light.</h2>
+            </div>
+            <div className="hql-side" data-reveal>
+              <p className="t20" style={{ margin: 0 }}>Simplifying modular furniture lighting. Solderless profile lights and magnetic lighting for kitchens, wardrobes and furniture makers.</p>
+              <div className="hbtns">
+                <Link href="/quiklit/" className="btn">Explore QuikLit</Link>
                 <a href={wa("ql", "Hello MIRAKLE, I have a QuikLit enquiry.")} className="btn ghost">WhatsApp {MANAGERS.ql.name}</a>
               </div>
             </div>
-            <figure className="ql-img" data-reveal style={{ margin: 0 }}><img src="/img/wardrobe.jpg" alt="A wardrobe lit by QuikLit profiles" /></figure>
           </div>
           <div className="wrap ql-steps" data-reveal>
             {STEPS.map((s, i) => (
               <div key={s.n} className="ql-step">
-                <img src={`/img/ql_step${i + 1}.jpg`} alt={s.t} />
+                <img src={`/img/ql_step${i + 1}.jpg`} alt={s.t} loading="lazy" />
                 <span className="h28">{s.n} {s.t}</span>
                 <span className="t14 grey">{s.d}</span>
               </div>
             ))}
           </div>
+          <div className="wrap">
+            <Link href="/quiklit/boq/" className="hboq" data-reveal>
+              <span className="cap dim">The BOQ calculator</span>
+              <span className="h56">Enter each line of light.<br />Get the full order list.</span>
+              <span className="t16 dim">Profiles, accessory sets, connectors, sensors and power supplies, with order codes.</span>
+              <span className="btn light">Open the calculator</span>
+            </Link>
+          </div>
         </section>
 
         {/* 03 Decorative */}
-        <section className="deco chapter" id="decorative">
-          <div className="deco-grid">
-            <div className="deco-main"><img src="/img/deco_dining.jpg" alt="A silk pendant over a dining table" /></div>
-            <div className="deco-side" data-reveal>
-              <span style={{ display: "block", width: 96, height: 2, background: "var(--deco)" }} />
-              <span className="chapter-num" style={{ color: "var(--on-dark-grey)" }}>03 · Decorative Lighting</span>
-              <h2 className="h56">214+ curated designer lights.</h2>
-              <p className="t20" style={{ margin: 0, color: "rgba(246,244,240,.8)" }}>A carefully selected collection, chosen for form, material and detail. For premium residential, hospitality and commercial spaces.</p>
-              <span className="cap" style={{ color: "var(--on-dark-grey)" }}>Marble · Mulberry silk · Glass · Resin · Paper</span>
-              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                <Link href="/decorative/" className="btn light">Explore Decorative Lighting</Link>
+        <section className="hdeco" id="decorative">
+          <div className="hdeco-top">
+            <figure className="hdeco-img"><img src="/img/deco/cover-lunar.jpg" alt="LUNAR pendant light" loading="lazy" /><figcaption className="cap">Pictured · LUNAR</figcaption></figure>
+            <div className="hdeco-copy" data-reveal>
+              <span className="cap dim">03 · Decorative Lighting</span>
+              <h2 className="h88">Light you<br />live with.</h2>
+              <p className="t20 dim" style={{ margin: 0 }}>Pendants, hanging lights, wall and ceiling lights, lamps and a collection of wireless lamps, chosen for the rooms people live in.</p>
+              <span className="cap">{designs(DECO)} designs · {codes(DECO)} order codes · Limited edition</span>
+              <div className="hbtns">
+                <Link href="/decorative/" className="btn light">Explore Decorative</Link>
                 <a href={wa("deco", "Hello MIRAKLE, I have a Decorative Lighting enquiry.")} className="btn ghost-light">WhatsApp {MANAGERS.deco.name}</a>
               </div>
             </div>
           </div>
-          <div className="deco-pieces">
-            {PIECES.map((p) => <Link key={p} href={`/decorative/${p === "HPHL1252" ? "hphl1252-gd" : p.toLowerCase()}/`} aria-label={p}><img src={`/img/${p}.jpg`} alt={p} /></Link>)}
+          <div className="hdeco-pieces">
+            {PIECES.map((p) => <Link key={p.slug} href={`/decorative/${p.slug}/`}><img src={p.img} alt={`${p.name} in a room`} loading="lazy" /><span className="cap">{p.name}</span></Link>)}
           </div>
         </section>
 
-        {/* Why light */}
+        {/* Mission */}
         <section className="story">
           <div className="wrap story-grid">
             <figure className="story-img" data-reveal style={{ margin: 0 }}>
-              <img src="/img/home_beam.jpg" alt="A single beam of light landing on travertine" />
+              <img src="/img/home_beam.jpg" alt="A single beam of light landing on travertine" loading="lazy" />
               <span className="viz-tag">Visualisation</span>
             </figure>
             <div data-reveal style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-              <span className="cap" style={{ color: "var(--on-dark-grey)" }}>Our mission</span>
+              <span className="cap dim">Our mission</span>
               <h2 className="h40">A fitting is a product. A well-lit room is a solution. We work on the second.</h2>
-              <p className="t20" style={{ margin: 0, color: "var(--on-dark-grey)" }}>
-                To be India&apos;s most trusted solution-driven lighting company: for the architect who specifies, the factory that builds and the family that lives with the result.
-              </p>
+              <p className="t20 dim" style={{ margin: 0 }}>To be India&apos;s most trusted solution-driven lighting company: for the architect who specifies, the factory that builds and the family that lives with the result.</p>
               <div><Link href="/about/" className="btn ghost-light">About MIRAKLE</Link></div>
             </div>
           </div>

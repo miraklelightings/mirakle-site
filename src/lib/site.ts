@@ -19,3 +19,10 @@ export const CLIENTS: string[] = [];
 
 export const INSTAGRAM = { handle: "@hrisha_lightings", url: "https://www.instagram.com/hrisha_lightings" };
 export const wa = (w: World, text: string) => `https://wa.me/${MANAGERS[w].wa}?text=${encodeURIComponent(text)}`;
+
+// The sections of each vertical, shown as the second row of the header on every page of that vertical.
+export const WORLD_NAV: Record<World, { label: string; href: string }[]> = {
+  arch: [{ label: "Magnetic track", href: "/architectural/elva-5/" }, { label: "Spotlights", href: "/architectural/#spotlights" }, { label: "Linear", href: "/architectural/linear/" }, { label: "LED drivers", href: "/architectural/drivers/" }, { label: "Configurator", href: "/architectural/titan/" }, { label: "Spec support", href: "/contact/#architectural" }],
+  ql: [{ label: "Profiles", href: "/quiklit/#profiles" }, { label: "QuikMag", href: "/quiklit/#families" }, { label: "Spots & sensors", href: "/quiklit/#families" }, { label: "Power", href: "/quiklit/#families" }, { label: "Install", href: "/quiklit/#install" }, { label: "BOQ calculator", href: "/quiklit/boq/" }],
+  deco: [],
+};

@@ -1,26 +1,43 @@
+"use client";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { WORLDS, type World } from "@/lib/site";
 
-const accent: Record<World, string> = { arch: "var(--arch)", ql: "var(--ql)", deco: "var(--deco)" };
+const SITE_NAV = [{ label: "About", href: "/about/" }, { label: "Downloads", href: "/downloads/" }, { label: "Contact", href: "/contact/" }];
 
-export default function Header({ world, nav = [], cta }: { world?: World; nav?: { label: string; href: string }[]; cta?: { label: string; href: string } }) {
+// One bar on every page: the mark, the three verticals, then the company links.
+// Inside a vertical, a second row carries that vertical's own sections.
+// `over` lets the bar sit clear on top of a full-screen photograph until the page scrolls.
+export default function Header({ world, nav = [], cta, over = false }: { world?: World; nav?: { label: string; href: string }[]; cta?: { label: string; href: string }; over?: boolean }) {
+  const [top, setTop] = useState(true);
+  useEffect(() => {
+    if (!over) return;
+    const on = () => setTop(window.scrollY < 24);
+    on(); window.addEventListener("scroll", on, { passive: true });
+    return () => window.removeEventListener("scroll", on);
+  }, [over]);
+  const clear = over && top;
+  const sub = world ? nav : [];
   return (
-    <header style={{ position: "sticky", top: 0, zIndex: 10, background: "var(--paper)", borderBottom: "1px solid var(--rule)" }}>
-      <div className="wrap cap" style={{ display: "flex", gap: 24, height: 36, alignItems: "center", borderBottom: "1px solid var(--rule)" }}>
-        {WORLDS.map((w) => (
-          <Link key={w.id} href={w.href} style={{ textDecoration: "none", color: w.id === world ? "var(--ink)" : "var(--grey)", paddingBottom: 2, borderBottom: w.id === world ? "2px solid transparent" : 0, borderImage: w.id === world ? `${accent[w.id]} 1` : undefined }}>
-            {w.label}
-          </Link>
-        ))}
-        <Link href="/" className="hide-sm" style={{ marginLeft: "auto", textDecoration: "none", color: "var(--grey)" }}>MIRAKLE home</Link>
-      </div>
-      <div className="wrap" style={{ display: "flex", alignItems: "center", gap: 28, height: 64 }}>
-        <Link href="/" aria-label="MIRAKLE home"><img src="/Mirakle_Logo_Black.svg" alt="MIRAKLE" style={{ height: 20, width: "auto" }} /></Link>
-        <nav className="cap hide-sm" style={{ display: "flex", gap: 22, marginLeft: "auto" }}>
-          {nav.map((n) => <Link key={n.href} href={n.href} style={{ textDecoration: "none" }}>{n.label}</Link>)}
+    <header className={"hdr" + (over ? " over" : "") + (clear ? " clear" : "")}>
+      <div className="wrap hdr-row">
+        <Link href="/" aria-label="MIRAKLE home" className="hdr-logo"><img src={clear ? "/Mirakle_Logo_White.svg" : "/Mirakle_Logo_Black.svg"} alt="MIRAKLE" width={110} height={20} /></Link>
+        <nav className="hdr-worlds cap" aria-label="The three verticals">
+          {WORLDS.map((w) => <Link key={w.id} href={w.href} aria-current={w.id === world ? "page" : undefined}>{w.label}</Link>)}
         </nav>
-        {cta && <Link href={cta.href} className="btn" style={{ marginLeft: nav.length ? 0 : "auto" }}>{cta.label}</Link>}
+        <nav className="hdr-site cap hide-sm" aria-label="Company">
+          {SITE_NAV.map((n) => <Link key={n.href} href={n.href}>{n.label}</Link>)}
+        </nav>
+        {cta && <Link href={cta.href} className="btn hdr-cta">{cta.label}</Link>}
       </div>
+      {sub.length > 0 && (
+        <div className="hdr-sub">
+          <nav className="wrap cap" aria-label="In this vertical">
+            {world === "ql" && <Link href="/quiklit/" aria-label="QuikLit" className="hdr-ql"><img src="/img/quiklit-black.png" alt="QuikLit" /></Link>}
+            {sub.map((n) => <Link key={n.href} href={n.href}>{n.label}</Link>)}
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

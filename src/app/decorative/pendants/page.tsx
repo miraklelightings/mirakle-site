@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
-import Listing from "@/components/deco/Listing";
-import { FAMILIES, inFamily } from "@/lib/deco";
+import Link from "next/link";
 
-// The earlier address of the pendant family. Kept so old links still land on the collection.
-const f = FAMILIES[0];
-export const metadata: Metadata = { title: `${f.name} · Decorative`, description: f.line };
-export default function Page() { return <Listing cap="Decorative · by type" title={f.name} line={f.line} list={inFamily(f.id)} crumb={f.name} />; }
+// The earlier address of the pendant chapter. It now sends visitors to the chapter itself.
+export const metadata: Metadata = { title: "Pendant lights", robots: { index: false }, alternates: { canonical: "/decorative/pendant/" } };
+export default function Page() {
+  return (
+    <main className="wrap" style={{ padding: "120px 0" }}>
+      <meta httpEquiv="refresh" content="0;url=/decorative/pendant/" />
+      <p className="t20">This page has moved. <Link href="/decorative/pendant/">Go to pendant lights</Link>.</p>
+    </main>
+  );
+}

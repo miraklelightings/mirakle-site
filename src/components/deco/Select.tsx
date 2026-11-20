@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { MANAGERS } from "@/lib/site";
 import { ENQUIRY_URL } from "@/components/Enhance";
+import { labelOfCode, nameOfCode } from "@/lib/decoNames";
 
 const KEY = "mirakle-deco-selection";
 const read = (): string[] => { try { return JSON.parse(localStorage.getItem(KEY) || "[]"); } catch { return []; } };
@@ -23,7 +24,7 @@ export function useSelection() {
 export function SelectButton({ code, small }: { code: string; small?: boolean }) {
   const { sel, toggle } = useSelection();
   const on = sel.includes(code);
-  return <button type="button" className={"dsel" + (on ? " on" : "") + (small ? " small" : "")} aria-pressed={on} onClick={(e) => { e.preventDefault(); toggle(code); }}>{on ? "Added ✓" : small ? "+ Select" : `Add ${code} to selection`}</button>;
+  return <button type="button" className={"dsel" + (on ? " on" : "") + (small ? " small" : "")} aria-pressed={on} onClick={(e) => { e.preventDefault(); toggle(code); }}>{on ? "Added ✓" : small ? "+ Select" : `Add ${nameOfCode(code) || code} to selection`}</button>;
 }
 
 export function SelectionBar() {
@@ -42,14 +43,14 @@ export function SelectionForm() {
   const [f, setF] = useState({ name: "", mobile: "", role: "Interior designer", city: "", project: "Residential", when: "Within a month" });
   const [state, setState] = useState<"" | "need" | "sending" | "ok" | "err">("");
   const m = MANAGERS.deco;
-  const text = `Hello MIRAKLE, I would like a quote for: ${sel.join(", ") || "(pieces to be chosen)"}.`;
+  const text = `Hello MIRAKLE, I would like a quote for: ${sel.map(labelOfCode).join(", ") || "(pieces to be chosen)"}.`;
   const send = async () => {
     if (!f.name.trim() || f.mobile.replace(/\D/g, "").length < 10) { setState("need"); return; }
     setState("sending");
     try {
       await fetch(ENQUIRY_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({
         world: "deco", form: "Decorative selection", name: f.name.trim(), mobile: f.mobile.trim(), email: "", company: "", role: f.role, city: f.city.trim(), project: f.project, sendVia: "",
-        items: sel.join(", "), message: `Timing: ${f.when}`, page: window.location.href, website: "",
+        items: sel.map(labelOfCode).join(", "), message: `Timing: ${f.when}`, page: window.location.href, website: "",
       }) });
       setState("ok");
     } catch { setState("err"); }
@@ -59,7 +60,7 @@ export function SelectionForm() {
       <div className="dform-list">
         <span className="cap grey">Your selection · {sel.length} {sel.length === 1 ? "piece" : "pieces"}</span>
         {sel.length === 0 && <p className="t16 grey">Nothing selected yet. Press “Select” on any piece as you browse, and it collects here.</p>}
-        <ul>{sel.map((c) => <li key={c}><span>{c}</span><button type="button" onClick={() => toggle(c)} aria-label={`Remove ${c}`}>Remove</button></li>)}</ul>
+        <ul>{sel.map((c) => <li key={c}><span>{labelOfCode(c)}</span><button type="button" onClick={() => toggle(c)} aria-label={`Remove ${c}`}>Remove</button></li>)}</ul>
         {sel.length > 1 && <button type="button" className="dform-clear" onClick={clear}>Clear all</button>}
       </div>
       <div className="dform-fields">

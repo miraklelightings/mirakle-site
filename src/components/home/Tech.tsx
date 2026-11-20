@@ -23,17 +23,10 @@ export default function Tech() {
       <div className="tech-shade" />
       <div className="wrap tech-copy">
         <span className="chapter-num" style={{ color: "var(--on-dark-grey)" }}><span style={{ display: "inline-block", width: 56, height: 2, background: "var(--arch)", verticalAlign: "middle", marginRight: 14 }} />01 · Architectural</span>
-        <h2 className="h56" style={{ maxWidth: 760 }}>Light that serves the architecture.</h2>
+        <h2 className="h88" style={{ maxWidth: 900 }}>See the light.<br />Never the lamp.</h2>
         <p className="t20" style={{ margin: 0, maxWidth: 560, color: "rgba(246,244,240,.82)" }}>
-          Architectural lighting solutions for professional projects, architects and interior designers.
+          A good fitting disappears. What stays is a circle on the floor, a wash on the wall, a glow in the cove.
         </p>
-        <span className="h28">1000+ SKUs. Locally assembled.</span>
-        <div className="pills">
-          <Link className="pill" href="/architectural/#magnetic">Magnetic track</Link>
-          <Link className="pill" href="/architectural/#spotlights">COB spotlights</Link>
-          <Link className="pill" href="/architectural/#linear">LED strips and linear</Link>
-          <Link className="pill" href="/architectural/#drivers">LED drivers</Link>
-        </div>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 8 }}>
           <Link href="/architectural/" className="btn light">Explore the full range</Link>
           <a href={wa("arch", "Hello MIRAKLE, I have an Architectural lighting enquiry.")} className="btn ghost-light">WhatsApp {MANAGERS.arch.name}</a>
