@@ -611,3 +611,47 @@ html.dock-off .dock{transform:translateY(100%)}
 .hdr-ql{flex:none}
 @media (max-width:900px){.hrange-item .h28{font-size:20px}.hrange{padding-bottom:56px}.hdeco-copy .h88,.hql-copy .h88{font-size:clamp(40px,11vw,64px)}}
 html{scroll-padding-top:124px}
+
+/* ---------- motion: headline rise, picture wipe, depth, light-on hover ---------- */
+.rise>span{display:block;overflow:hidden;padding-bottom:.06em}
+.rise>span>i{display:block;font-style:normal;transform:translateY(105%);animation:rise 1.2s cubic-bezier(.16,.8,.2,1) forwards}
+.rise>span:nth-child(2)>i{animation-delay:.14s}
+@keyframes rise{to{transform:none}}
+.fadeup{opacity:0;animation:fadeup 1s ease .7s forwards}
+@keyframes fadeup{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.hh-rail{animation:fadeup 1s ease .9s both}
+/* pictures open like a shutter as they arrive */
+.reveal .hrange-img,.reveal .dchap-img,.reveal .story-img img{clip-path:inset(0 0 100% 0);transition:clip-path 1.3s cubic-bezier(.2,.7,.2,1)}
+.reveal.in .hrange-img,.reveal.in .dchap-img,.reveal.in .story-img img{clip-path:inset(0)}
+.hrange-item:nth-child(2) .hrange-img{transition-delay:.12s}.hrange-item:nth-child(3) .hrange-img{transition-delay:.24s}.hrange-item:nth-child(4) .hrange-img{transition-delay:.36s}
+/* tiles sit dim and come up to full light under the cursor */
+.hrange-img img{filter:brightness(.72) saturate(.9)}
+.hdeco-pieces img{filter:brightness(.8);transition:transform 1.4s cubic-bezier(.2,.7,.2,1),filter .8s}
+.hdeco-pieces a:hover img{filter:brightness(1.05)}
+.dchap-img img{filter:brightness(.9);transition:transform 1.4s cubic-bezier(.2,.7,.2,1),filter .8s}
+.dchap-item:hover .dchap-img img{filter:brightness(1.05)}
+[data-parallax]{will-change:transform;transform:scale(1.1)}
+.hql-img{position:relative}
+/* one line of light, seven places */
+.inuse{background:#0c0b0a;color:var(--on-dark)}
+.inuse-stage{position:relative;height:min(86vh,860px);min-height:520px;overflow:hidden;display:flex;align-items:flex-end}
+.inuse-stage>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity 1.4s ease,transform 7s linear}
+.inuse-stage>img.on{opacity:1;transform:scale(1)}
+.inuse-shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(12,11,10,.85) 0%,rgba(12,11,10,.1) 45%,rgba(12,11,10,.25) 100%)}
+.inuse-copy{position:relative;width:100%;display:flex;flex-direction:column;gap:14px;padding-bottom:48px}
+.inuse-range{text-decoration:none;align-self:flex-start;border-bottom:1px solid rgba(246,244,240,.5);padding-bottom:4px}
+.inuse-tabs{display:grid;grid-template-columns:repeat(7,1fr);border-top:1px solid rgba(246,244,240,.22)}
+.inuse-tab{position:relative;display:flex;flex-direction:column;gap:6px;align-items:flex-start;padding:18px 20px 22px;background:none;border:0;border-left:1px solid rgba(246,244,240,.16);color:rgba(246,244,240,.5);cursor:pointer;font:inherit;text-transform:uppercase;transition:color .3s,background .3s}
+.inuse-tab:first-child{border-left:0}
+.inuse-tab:hover,.inuse-tab.on{color:var(--on-dark)}
+.inuse-tab.on{background:rgba(246,244,240,.05)}
+.inuse-name{font-size:clamp(14px,1.3vw,18px);font-weight:300;letter-spacing:.08em}
+.inuse-bar{position:absolute;left:0;right:0;top:-1px;height:2px;overflow:hidden}
+.inuse-bar span{display:block;height:100%;width:0;background:var(--on-dark)}
+.inuse-bar span.full{width:100%}
+.inuse-bar span.run{animation:hhrun 5s linear forwards}
+@media (max-width:900px){.inuse-stage{height:64vh;min-height:420px}.inuse-tabs{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(104px,1fr);overflow-x:auto;scrollbar-width:none}.inuse-tabs::-webkit-scrollbar{display:none}.inuse-tab{padding:14px 14px 16px}.inuse-copy{padding-bottom:28px}}
+@media (prefers-reduced-motion:reduce){.rise>span>i{animation:none;transform:none}.fadeup,.hh-rail{animation:none;opacity:1}.inuse-stage>img{transition:opacity .01s}.inuse-bar span.run{animation:none;width:100%}[data-parallax]{transform:none!important}.reveal .hrange-img,.reveal .dchap-img,.reveal .story-img img{clip-path:none}}
+.hrange-img.product{background:#f2f1ed}
+.hrange-img.product img{object-fit:contain;filter:none;padding:10%;mix-blend-mode:normal}
+.hrange-item:hover .hrange-img.product img{filter:none}

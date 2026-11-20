@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/home/Hero";
 import Tech from "@/components/home/Tech";
-import RoomLab from "@/components/home/RoomLab";
+import InUse from "@/components/home/InUse";
 import { DECO, codes, designs } from "@/lib/deco";
 import { CLIENTS, INSTAGRAM, MANAGERS, wa } from "@/lib/site";
 
@@ -19,9 +19,9 @@ const STEPS = [
 ];
 // The four chapters of the Architectural Lighting Catalogue 2027–28.
 const RANGE = [
-  { no: "01", name: "Magnetic lighting", line: "ELVA 5. A 48 V magnetic track system with a 5 mm opening.", href: "/architectural/elva-5/", img: "/img/elva_room.jpg" },
-  { no: "02", name: "Spotlights", line: "Nineteen COB series, recessed, surface and track.", href: "/architectural/#spotlights", img: "/img/viz_titan.jpg" },
-  { no: "03", name: "Linear", line: "OPTIPRO strips, CURVA, ARCUS and SKYLIT.", href: "/architectural/linear/", img: "/img/facade.jpg" },
+  { no: "01", name: "Magnetic lighting", line: "ELVA 5. A 48 V magnetic track system with a 5 mm opening.", href: "/architectural/elva-5/", img: "/img/cat/track_corridor.jpg" },
+  { no: "02", name: "Spotlights", line: "Nineteen COB series, recessed, surface and track.", href: "/architectural/#spotlights", img: "/img/cat/spot_corridor.jpg" },
+  { no: "03", name: "Linear", line: "OPTIPRO strips, CURVA, ARCUS and SKYLIT.", href: "/architectural/linear/", img: "/img/cat/curva.jpg" },
   { no: "04", name: "LED drivers", line: "Nineteen drivers in six families.", href: "/architectural/drivers/", img: "/p/vega.jpg", product: true },
 ];
 // Four ideas from the catalogue's pages on light.
@@ -69,7 +69,7 @@ export default function Home() {
             ))}
           </div>
         </section>
-        <RoomLab />
+        <InUse />
 
         {/* On light */}
         <section className="honl">
@@ -89,7 +89,7 @@ export default function Home() {
 
         {/* 02 QuikLit */}
         <section className="hql" id="quiklit">
-          <figure className="hql-img"><img src="/img/wardrobe.jpg" alt="A wardrobe lit by QuikLit profiles" loading="lazy" /></figure>
+          <figure className="hql-img"><img src="/img/cat/ql_walkin.jpg" alt="A walk-in wardrobe lit by QuikLit profiles" loading="lazy" data-parallax /></figure>
           <div className="wrap hql-top">
             <div className="hql-copy" data-reveal>
               <span className="cap grey">02 · QuikLit</span>
@@ -146,8 +146,7 @@ export default function Home() {
         <section className="story">
           <div className="wrap story-grid">
             <figure className="story-img" data-reveal style={{ margin: 0 }}>
-              <img src="/img/home_beam.jpg" alt="A single beam of light landing on travertine" loading="lazy" />
-              <span className="viz-tag">Visualisation</span>
+              <img src="/img/cat/honeycomb.jpg" alt="Close view of a recessed spotlight with a honeycomb louvre" loading="lazy" />
             </figure>
             <div data-reveal style={{ display: "flex", flexDirection: "column", gap: 24 }}>
               <span className="cap dim">Our mission</span>

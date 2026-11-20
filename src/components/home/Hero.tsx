@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react";
 
 // The opening screen. One line, one photograph at a time, and the three verticals always in view.
 const SLIDES = [
-  { id: "arch", no: "01", name: "Architectural", href: "/architectural/", line: "Magnetic track, spotlights, linear light and LED drivers.", img: "/img/home_lobby.jpg", alt: "A lobby wall grazed by linear light, with track spotlights over the desk", pos: "50% 50%" },
-  { id: "ql", no: "02", name: "QuikLit", href: "/quiklit/", line: "Solderless lighting for kitchens, wardrobes and furniture.", img: "/img/home_kitchen.jpg", alt: "A modular kitchen and shelves lit by slim profile lights", pos: "50% 40%" },
+  { id: "arch", no: "01", name: "Architectural", href: "/architectural/", line: "Magnetic track, spotlights, linear light and LED drivers.", img: "/img/cat/elva.jpg", alt: "ELVA 5 magnetic track lighting a living room with a slatted wall", pos: "50% 60%" },
+  { id: "ql", no: "02", name: "QuikLit", href: "/quiklit/", line: "Solderless lighting for kitchens, wardrobes and furniture.", img: "/img/cat/ql_cover.jpg", alt: "Furniture shelves lit by slim QuikLit profile lights", pos: "50% 45%" },
   { id: "deco", no: "03", name: "Decorative", href: "/decorative/", line: "Pendants, hanging lights, lamps and wireless lamps.", img: "/img/deco/phase.jpg", alt: "PHASE pendant lights hanging through a spiral staircase", pos: "50% 50%" },
 ];
 const HOLD = 6500;
@@ -31,8 +31,8 @@ export default function Hero() {
       {SLIDES.map((s, k) => <img key={s.id} src={s.img} alt={k === i ? s.alt : ""} className={"hh-img" + (k === i ? " on" : "")} style={{ objectPosition: s.pos }} fetchPriority={k === 0 ? "high" : "low"} />)}
       <div className="hh-shade" />
       <div className="wrap hh-copy">
-        <h1 className="h120">Light,<br />thought through.</h1>
-        <p className="cap hh-desc">Lighting for architecture, furniture and interiors</p>
+        <h1 className="h120 rise"><span><i>Light,</i></span><span><i>thought through.</i></span></h1>
+        <p className="cap hh-desc fadeup">Lighting for architecture, furniture and interiors</p>
       </div>
       <nav ref={rail} className="hh-rail" aria-label="The three verticals">
         {SLIDES.map((s, k) => (

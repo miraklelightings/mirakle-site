@@ -19,7 +19,7 @@ export default function Tech() {
   }, []);
   return (
     <section ref={ref} className="tech chapter" id="technical">
-      <img src="/img/home_hero.jpg" alt="Recessed spotlights washing a plaster wall at dusk" />
+      <img src="/img/cat/arcus.jpg" alt="A brick wall grazed with light" />
       <div className="tech-shade" />
       <div className="wrap tech-copy">
         <span className="chapter-num" style={{ color: "var(--on-dark-grey)" }}><span style={{ display: "inline-block", width: 56, height: 2, background: "var(--arch)", verticalAlign: "middle", marginRight: 14 }} />01 · Architectural</span>
@@ -32,7 +32,7 @@ export default function Tech() {
           <a href={wa("arch", "Hello MIRAKLE, I have an Architectural lighting enquiry.")} className="btn ghost-light">WhatsApp {MANAGERS.arch.name}</a>
         </div>
       </div>
-      <span className="viz-tag">Visualisation · move your cursor</span>
+      <span className="viz-tag">Move your cursor</span>
     </section>
   );
 }
