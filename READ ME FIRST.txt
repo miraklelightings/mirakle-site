@@ -1,14 +1,12 @@
-MIRAKLE WEBSITE - UPDATE 12 (19 NOV 2026)
+MIRAKLE WEBSITE - UPDATE 16 (21 NOV 2026)  -  ONE DRAG, 3 FILES
 
-Upload the three folders in this order. Each one is under 100 files.
+Adds the six-second opening film to the home page (computers and wide tablets).
+Phones keep the photograph.
 
-Open: https://github.com/miraklelightings/mirakle-site/upload/main
+1. Open: https://github.com/miraklelightings/mirakle-site/upload/main
+2. Open this folder (UPLOAD-16). Select the two folders inside it, "public" and "src", together.
+   Drag them onto the page.
+   CHECK: every name in the list must start with  public/  or  src/
+3. Wait for all 3 files, then press "Commit changes".
 
-1. Open the folder "1 OF 3 - PICTURES". Drag the "public" folder inside it onto the page.
-   Wait until every file is listed, then press "Commit changes".
-2. Do the same with "2 OF 3 - PICTURES".
-3. Open "3 OF 3 - SITE". Select both "public" and "src" together, drag them onto the page,
-   wait, then press "Commit changes".
-
-The site rebuilds itself in about two minutes after step 3.
-Nothing is deleted. The files replace older ones with the same name.
+The site rebuilds itself in about two minutes.
